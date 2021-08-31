@@ -1,31 +1,38 @@
 import './Footer.css';
 
+import githubLogo from '../../images/github.svg';
+import fbLogo from '../../images/fb.svg';
+
 function Footer() {
   return (
-    <div className="footer">
+    <footer className="footer">
       <div className="footer__container">
 
-        <div className="footer__copyright">copyright</div>
+        <div className="footer__copyright">&copy; 2021 Supersite, Powered by News API</div>
 
         <nav className="footer__navigator">
           <ul className="footer__links">
-            <li>
-              <a>Home</a>
+            <li className="footer__link-container">
+              <a className="footer__link">Home</a>
             </li>
-            <li>
-              <a>Practicum by Yandex</a>
+            <li className="footer__link-container">
+              <a className="footer__link">Practicum by Yandex</a>
             </li>
-            <li>
-              <a>github logo</a>
+            <li className="footer__link-container">
+              <a className="footer__link">
+                <img src={githubLogo}/>
+              </a>
             </li>
-            <li>
-              <a>fb logo</a>
+            <li className="footer__link-container">
+              <a className="footer__link">
+                <img src={fbLogo}/>
+              </a>
             </li>
           </ul>
         </nav>
 
       </div>
-    </div>
+    </footer>
   );
 }
 

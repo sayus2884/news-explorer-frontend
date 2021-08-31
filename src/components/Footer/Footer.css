@@ -1,0 +1,42 @@
+.footer {
+
+}
+
+.footer__container {
+  display: flex;
+  justify-content: space-between;
+  padding: 30px 104px;
+}
+
+.footer__copyright {
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 22px;
+  color: #B6BCBF;
+  align-self: center;
+}
+
+.footer__links {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  display: flex;
+  align-items: center;
+}
+
+.footer__link-container {
+  margin-right: 30px;
+}
+
+.footer__link-container:last-child {
+  margin-right: 0;
+}
+
+.footer__link {
+  font-family: 'Roboto';
+  font-weight: 400;
+  font-size: 18px;
+  line-height: 24px;
+
+  text-align: center;
+}

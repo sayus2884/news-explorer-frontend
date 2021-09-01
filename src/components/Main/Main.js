@@ -28,19 +28,20 @@ function Main() {
     <div className="main">
       <Header/>
 
+      <section className="news-list">
 
+        <h2 className="news-list__title">Search results</h2>
+
+        <NewsCardList news={news}/>
+
+        <button className="news-list__button">Show more</button>
+
+      </section>
 
       <About />
       <Footer />
     </div>
   );
 }
-
-// <section className="main__news-list">
-//   <h2 className="main__result-title">Search results</h2>
-//
-//   <NewsCardList news={news}/>
-//
-// </section>
 
 export default Main;

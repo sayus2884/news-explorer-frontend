@@ -1,8 +1,8 @@
 import './Navigation.css';
 
-function Navigation() {
+function Navigation({ isSavedNews }) {
   return (
-    <div className="navigation">
+    <div className={`navigation ${isSavedNews && 'navigation_theme_white'}`}>
       <div className="navigation__container">
         <div className="navigation__logo">NewsExplorer</div>
 
@@ -13,11 +13,11 @@ function Navigation() {
           <li className="navigation__link-container">
             <a className="navigation__link">Saved articles</a>
           </li>
-          <li className="navigation__link-container navigation__link-container_type_button">
-            <button className="navigation__link_type_button">Sign in</button>
+          <li className="navigation__link-container navigation__button-container">
+            <button className={`navigation__button ${isSavedNews && 'navigation__button_theme_white'}`}>Sign in</button>
           </li>
-          <li className="navigation__link-container navigation__link-container_type_button">
-            <button className="navigation__link_type_button">Tom [Log out icon]</button>
+          <li className="navigation__link-container navigation__button-container">
+            <button className={`navigation__button ${isSavedNews && 'navigation__button_theme_white'}`}>Tom [Log out icon]</button>
           </li>
         </ul>
       </div>

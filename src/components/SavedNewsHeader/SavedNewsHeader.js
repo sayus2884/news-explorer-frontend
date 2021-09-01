@@ -5,19 +5,23 @@ import SearchForm from '../SearchForm/SearchForm';
 
 function SavedNewsHeader() {
   return (
-    <header className="header">
-      <Navigation />
+    <header className="saved-news-header">
+      <Navigation isSavedNews={true}/>
 
-      <h3 className="header__sub-title">
-        Saved Articles
-      </h3>
+      <div className="saved-news-header__container">
 
-      <h2 className="header__intro-title">
-        Tom, you have saved 5 articles
-      </h2>
-      <p className="header__keywords">
-        By keywords:
-      </p>
+        <h3 className="saved-news-header__sub-title">
+          Saved Articles
+        </h3>
+
+        <h2 className="saved-news-header__title">
+          Tom, you have saved 5 articles
+        </h2>
+        <p className="saved-news-header__keywords">
+          By keywords:
+          <span className="saved-news-header__tags"> Nature, Yellowstone, and 2 other</span>
+        </p>
+      </div>
     </header>
   );
 }

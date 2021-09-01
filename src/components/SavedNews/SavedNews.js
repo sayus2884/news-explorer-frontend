@@ -28,8 +28,7 @@ function SavedNews() {
     <div className="saved-news">
       <SavedNewsHeader/>
 
-      <section className="main__news-list">
-        <h2 className="main__result-title">Search results</h2>
+      <section className="news-list">
 
         <NewsCardList news={news}/>
 

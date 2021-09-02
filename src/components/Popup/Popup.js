@@ -1,6 +1,6 @@
 import './Popup.css';
 
-function PopupWithForm({ title, name, isOpen, onClose, onSubmit, buttonText="Save", children }) {
+function PopupWithForm({ title, name, isOpen=false, onClose, onSubmit, buttonText="Save", children }) {
 
   function handleSubmit(event){
     onSubmit(event);

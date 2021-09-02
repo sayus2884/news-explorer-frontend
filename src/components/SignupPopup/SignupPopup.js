@@ -6,7 +6,6 @@ import Popup from '../Popup/Popup'
 function SignupPopup() {
   return (
     <Popup
-      isOpen={true}
       title={"Sign up"}
     >
       <form className="popup__form form">

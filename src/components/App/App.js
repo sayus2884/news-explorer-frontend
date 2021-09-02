@@ -5,6 +5,8 @@ import './App.css';
 
 import Main from '../Main/Main'
 import SavedNews from '../SavedNews/SavedNews'
+import SignupPopup from '../SignupPopup/SignupPopup'
+import SigninPopup from '../SigninPopup/SigninPopup'
 
 function App() {
   return (
@@ -12,6 +14,10 @@ function App() {
       <BrowserRouter>
         <Main/>
         <SavedNews/>
+
+        <SignupPopup/>
+        <SigninPopup/>
+
       </BrowserRouter>
     </React.StrictMode>
   );

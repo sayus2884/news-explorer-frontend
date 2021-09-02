@@ -1,4 +1,5 @@
 import './Navigation.css';
+import { withRouter, useLocation, Link } from 'react-router-dom';
 
 function Navigation({ isSavedNews }) {
   return (
@@ -8,10 +9,10 @@ function Navigation({ isSavedNews }) {
 
         <ul className="navigation__links">
           <li className="navigation__link-container">
-            <a className="navigation__link">Home</a>
+            <Link to="/" className={`navigation__link ${isSavedNews && 'navigation__link_theme_white'}`}>Home</Link>
           </li>
           <li className="navigation__link-container">
-            <a className="navigation__link">Saved articles</a>
+            <Link to="/saved-news" className={`navigation__link ${isSavedNews && 'navigation__link_theme_white'}`}>Saved articles</Link>
           </li>
           <li className="navigation__link-container navigation__button-container">
             <button className={`navigation__button ${isSavedNews && 'navigation__button_theme_white'}`}>Sign in</button>
@@ -25,4 +26,4 @@ function Navigation({ isSavedNews }) {
   );
 }
 
-export default Navigation;
+export default withRouter(Navigation);

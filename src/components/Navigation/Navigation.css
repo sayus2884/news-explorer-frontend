@@ -1,5 +1,10 @@
 .navigation {
   border-bottom: 1px solid white;
+  font-family: 'Roboto';
+  font-style: normal;
+  font-weight: 500;
+  font-size: 18px;
+  line-height: 24px;
 }
 
 .navigation_theme_white {
@@ -9,6 +14,11 @@
 
 .navigation__logo {
   align-self: center;
+  font-family: 'Roboto Slab';
+  font-style: normal;
+  font-weight: bold;
+  font-size: 20px;
+  line-height: 24px;
 }
 
 .navigation__container {
@@ -32,6 +42,20 @@
 
 .navigation__link-container:last-child {
   padding-right: 0;
+}
+
+.navigation__link {
+  color: white;
+  text-decoration: none;
+
+  font-style: normal;
+  font-weight: 500;
+  font-size: 18px;
+  line-height: 24px;
+}
+
+.navigation__link_theme_white {
+  color: black;
 }
 
 .navigation__button-container {

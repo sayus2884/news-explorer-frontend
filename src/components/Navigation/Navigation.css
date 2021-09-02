@@ -1,10 +1,12 @@
 .navigation {
-  border-bottom: 1px solid white;
+  border-bottom: 1px solid rgba(196, 196, 196, 0.01);
   font-family: 'Roboto';
   font-style: normal;
   font-weight: 500;
   font-size: 18px;
   line-height: 24px;
+
+  box-shadow: inset 0px -1px 0px rgba(255, 255, 255, 0.2);
 }
 
 .navigation_theme_white {
@@ -19,6 +21,8 @@
   font-weight: bold;
   font-size: 20px;
   line-height: 24px;
+
+  padding: 30px 0 26px;
 }
 
 .navigation__container {
@@ -26,6 +30,8 @@
   flex-direction: row;
   justify-content: space-between;
   padding: 0 104px;
+  min-height: 80px;
+  align-items: center;
 }
 
 .navigation__links {
@@ -34,10 +40,22 @@
   list-style: none;
   margin: 0;
   padding: 0;
+  align-items: center;
 }
 
 .navigation__link-container {
-  padding: 22px 8px 20px 8px;
+  padding: 0 8px 0 8px;
+  min-height: 77px;
+  display: flex;
+  align-items: center;
+}
+
+.navigation__link-container_active {
+  border-bottom: solid 3px white;
+}
+
+.active_theme_dark {
+  border-bottom: solid 3px black;
 }
 
 .navigation__link-container:last-child {
@@ -59,8 +77,6 @@
 }
 
 .navigation__button-container {
-  padding-top: 14px;
-  padding-bottom: 12px;
   align-self: center;
 }
 
@@ -71,6 +87,10 @@
   border: 1px solid;
   border-radius: 100px;
   height: 40px;
+}
+
+.navigation__button:hover {
+  cursor: pointer;
 }
 
 .navigation__button_theme_white {

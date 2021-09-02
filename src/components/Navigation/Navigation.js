@@ -8,7 +8,7 @@ function Navigation({ isSavedNews }) {
         <div className="navigation__logo">NewsExplorer</div>
 
         <ul className="navigation__links">
-          <li className="navigation__link-container">
+          <li className="navigation__link-container navigation__link-container_active">
             <Link to="/" className={`navigation__link ${isSavedNews && 'navigation__link_theme_white'}`}>Home</Link>
           </li>
           <li className="navigation__link-container">

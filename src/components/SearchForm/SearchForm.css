@@ -12,6 +12,7 @@
 .search-form__input {
   margin: 17px 0px 17px 24px;
   border: none;
+  width: 100%;
 }
 
 .search-form__input:focus {
@@ -25,4 +26,13 @@
   border-style: none;
   color: white;
   min-width: 156px;
+}
+
+.search-form__button:hover {
+  background: #347EFF;
+  cursor: pointer;
+}
+
+.search-form__button:active {
+  background: #2A65CC;
 }

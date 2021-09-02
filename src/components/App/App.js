@@ -1,5 +1,5 @@
 import React from 'react';
-import { BrowserRouter } from 'react-router-dom';
+import { Route, Switch, withRouter, useHistory } from 'react-router-dom';
 
 import './App.css';
 
@@ -10,17 +10,23 @@ import SigninPopup from '../SigninPopup/SigninPopup'
 
 function App() {
   return (
-    <React.StrictMode>
-      <BrowserRouter>
-        <Main/>
-        <SavedNews/>
+    <div className="page">
+      <Switch>
 
-        <SignupPopup/>
-        <SigninPopup/>
+        <Route path="/saved-news" key={document.location.href}>
+          <SavedNews/>
+        </Route>
 
-      </BrowserRouter>
-    </React.StrictMode>
+        <Route exact path="/" key={document.location.href}>
+          <Main/>
+        </Route>
+
+      </Switch>
+
+      <SignupPopup/>
+      <SigninPopup/>
+    </div>
   );
 }
 
-export default App;
+export default withRouter(App);

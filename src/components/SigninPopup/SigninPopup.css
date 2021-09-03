@@ -1,4 +1,4 @@
-.signup__link-container {
+.signin__link-container {
   text-align: center;
   margin: 16px 0 0;
   height: 20px;
@@ -6,4 +6,12 @@
   font-family: 'Inter';
   font-size: 14px;
   line-height: 17px;
+}
+
+.signin__link {
+  color: #2F71E5;
+}
+
+.signin__link:hover {
+  cursor: pointer;
 }

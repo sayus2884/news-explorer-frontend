@@ -7,3 +7,11 @@
   font-size: 14px;
   line-height: 17px;
 }
+
+.signup__link {
+  color: #2F71E5;
+}
+
+.signup__link:hover {
+  cursor: pointer;
+}

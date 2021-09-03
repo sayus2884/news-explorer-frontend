@@ -1,12 +1,23 @@
-import React from 'react';
+import { useContext } from 'react';
 import './SignupPopup.css';
 
-import Popup from '../Popup/Popup'
+import Popup from '../Popup/Popup';
 
-function SignupPopup() {
+import { NavigatorContext } from '../../contexts/NavigatorContext.js'
+
+function SignupPopup({ isOpen, onClose }) {
+  const { openSignInModal } = useContext(NavigatorContext);
+
+  const handleOpenSignInModal = (event) => {
+    event.preventDefault();
+    openSignInModal();
+  }
+
   return (
     <Popup
       title={"Sign up"}
+      isOpen={isOpen}
+      onClose={onClose}
     >
       <form className="popup__form form">
 
@@ -31,12 +42,12 @@ function SignupPopup() {
           <span className="form__input-error password-input-error"></span>
         </label>
 
-        <button className="form__submit-button" type="submit">Sign in</button>
+        <button className="form__submit-button" type="submit">Sign up</button>
 
       </form>
 
       <p className="signup__link-container">
-        or <a className="signup__link" href="/">Sign in</a>
+        or <a className="signup__link" onClick={handleOpenSignInModal}>Sign in</a>
       </p>
     </Popup>
   );

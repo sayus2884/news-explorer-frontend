@@ -2,7 +2,12 @@ import './Popup.css';
 
 function PopupWithForm({ title, name, isOpen=false, onClose, onSubmit, buttonText="Save", children }) {
 
-  function handleSubmit(event){
+  const handleOnClose = (event) => {
+    event.preventDefault();
+    onClose();
+  }
+
+  const handleSubmit = (event) => {
     onSubmit(event);
   }
 
@@ -18,7 +23,7 @@ function PopupWithForm({ title, name, isOpen=false, onClose, onSubmit, buttonTex
           {children}
 
 
-        <button className="popup__close-button" type="button" aria-label="close" title="close" onClick={onClose}></button>
+        <button className="popup__close-button" type="button" aria-label="close" title="close" onClick={handleOnClose}></button>
       </div>
 
     </div>

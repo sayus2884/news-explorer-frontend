@@ -25,6 +25,12 @@
   padding: 30px 0 26px;
 }
 
+@media screen and (max-width: 1440px) {
+  .navigation__logo {
+    padding: 22.73px 0 18.47px;
+  }
+}
+
 .navigation__container {
   display: flex;
   flex-direction: row;
@@ -33,6 +39,14 @@
   min-height: 80px;
   align-items: center;
 }
+
+@media screen and (max-width: 1440px) {
+  .navigation__container {
+    padding: 0 40px;
+    min-height: 66px;
+  }
+}
+
 
 .navigation__links {
   display: flex;
@@ -44,10 +58,16 @@
 }
 
 .navigation__link-container {
-  padding: 0 22px 0 22px;
+  padding: 0 22px;
   min-height: 77px;
   display: flex;
   align-items: center;
+}
+
+@media screen and (max-width: 1440px) {
+  .navigation__link-container {
+    min-height: 63px;
+  }
 }
 
 .navigation__link-container_active {
@@ -78,12 +98,19 @@
 
 .navigation__button-container {
   align-self: center;
+  padding-left: 34px;
+}
+
+@media screen and (max-width: 1440px) {
+  .navigation__button-container {
+    padding-left: 19px;
+  }
 }
 
 .navigation__button {
   min-height: 48px;
   min-width: 112px;
-  padding: 0 17px;
+  padding: 0 34px;
   background-color: transparent;
   color: white;
   border: 1px solid;
@@ -97,7 +124,13 @@
 }
 
 .navigation__button_type_signin {
-  width: 176px
+  min-width: 176px;
+}
+
+@media screen and (max-width: 1440px) {
+  .navigation__button_type_signin {
+    min-width: 152px
+  }
 }
 
 .navigation__button:hover {

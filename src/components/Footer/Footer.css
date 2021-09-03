@@ -1,11 +1,13 @@
-.footer {
-
-}
-
 .footer__container {
   display: flex;
   justify-content: space-between;
-  padding: 30px 104px;
+  padding: 30px 104px 26px;
+}
+
+@media screen and (max-width: 1440px) {
+  .footer__container {
+    padding: 21px 40px 18px;
+  }
 }
 
 .footer__copyright {

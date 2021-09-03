@@ -2,6 +2,12 @@
   margin: 144px 0 0;
 }
 
+@media screen and (max-width: 1440px) {
+  .search-form {
+    margin: 48px 0 0;
+  }
+}
+
 .search-form__container {
   background-color: white;
   border-radius: 100px;

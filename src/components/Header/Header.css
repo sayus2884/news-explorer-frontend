@@ -12,12 +12,24 @@
   color: white;
 }
 
+@media screen and (max-width: 1440px) {
+  .header {
+    padding-bottom: 48px;
+  }
+}
+
 .header__container {
   max-width: 608px;
   display: flex;
   flex-direction: column;
   margin: auto;
   text-align: left;
+}
+
+@media screen and (max-width: 1440px) {
+  .header__container {
+    max-width: 452px;
+  }
 }
 
 .header__title {
@@ -28,10 +40,24 @@
   line-height: 64px;
 }
 
+@media screen and (max-width: 1440px) {
+  .header__title {
+    margin: 38px 0 0;
+    font-size: 36px;
+    line-height: 40px;
+  }
+}
+
 .header__sub-title {
   margin: 32px 0 0;
   font-family: 'Roboto';
   font-weight: 400;
   font-size: 18px;
   line-height: 24px;
+}
+
+@media screen and (max-width: 1440px) {
+  .header__sub-title {
+    margin: 16px 0 0;
+  }
 }

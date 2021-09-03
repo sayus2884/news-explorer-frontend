@@ -29,14 +29,14 @@ function SigninPopup({ isOpen, onClose, onSubmit }) {
         <label className="form__field">
           Email
           <input className="form__input form__item form__item_type_email"
-            id="email-input" type="email" name="email" placeholder="Enter email" required/>
+            id="email-input" type="email" name="email" placeholder="Enter email" />
           <span className="form__input-error email-input-error"></span>
         </label>
 
         <label className="form__field">
           Password
           <input className="form__input form__item form__item_type_password"
-            id="password-input" type="password" name="password" placeholder="Enter password"  required/>
+            id="password-input" type="password" name="password" placeholder="Enter password"  />
           <span className="form__input-error password-input-error"></span>
         </label>
 

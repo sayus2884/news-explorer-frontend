@@ -54,7 +54,7 @@
   border-bottom: solid 3px white;
 }
 
-.active_theme_dark {
+.navigation__link-container_active_theme_white {
   border-bottom: solid 3px black;
 }
 

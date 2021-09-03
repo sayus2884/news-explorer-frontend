@@ -3,13 +3,19 @@ import { withRouter, useLocation, Link } from 'react-router-dom';
 import { ReactComponent as Icon } from '../../images/logout.svg';
 
 function Navigation({ isSavedNews }) {
+
+  const activeStyle = isSavedNews ?
+    "navigation__link-container_active_theme_white"
+    : "navigation__link-container_active";
+
+
   return (
     <div className={`navigation ${isSavedNews && 'navigation_theme_white'}`}>
       <div className="navigation__container">
         <div className="navigation__logo">NewsExplorer</div>
 
         <ul className="navigation__links">
-          <li className="navigation__link-container navigation__link-container_active">
+          <li className={`navigation__link-container ${activeStyle}`}>
             <Link to="/" className={`navigation__link ${isSavedNews && 'navigation__link_theme_white'}`}>Home</Link>
           </li>
           <li className="navigation__link-container">

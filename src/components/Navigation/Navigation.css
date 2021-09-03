@@ -25,9 +25,15 @@
   padding: 30px 0 26px;
 }
 
-@media screen and (max-width: 1440px) {
+@media screen and (min-width: 1440px) {
   .navigation__logo {
     padding: 22.73px 0 18.47px;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .navigation__logo {
+    padding: 0;
   }
 }
 
@@ -40,13 +46,19 @@
   align-items: center;
 }
 
-@media screen and (max-width: 1440px) {
+@media screen and (min-width: 1440px) {
   .navigation__container {
     padding: 0 40px;
     min-height: 66px;
   }
 }
 
+@media screen and (max-width: 768px) {
+  .navigation__container {
+    padding: 16px;
+    min-height: 24px;
+  }
+}
 
 .navigation__links {
   display: flex;
@@ -57,6 +69,12 @@
   align-items: center;
 }
 
+@media screen and (max-width: 768px) {
+  .navigation__links {
+    display: none;
+  }
+}
+
 .navigation__link-container {
   padding: 0 22px;
   min-height: 77px;
@@ -64,7 +82,7 @@
   align-items: center;
 }
 
-@media screen and (max-width: 1440px) {
+@media screen and (min-width: 1440px) {
   .navigation__link-container {
     min-height: 63px;
   }
@@ -101,7 +119,7 @@
   padding-left: 34px;
 }
 
-@media screen and (max-width: 1440px) {
+@media screen and (min-width: 1440px) {
   .navigation__button-container {
     padding-left: 19px;
   }
@@ -127,7 +145,7 @@
   min-width: 176px;
 }
 
-@media screen and (max-width: 1440px) {
+@media screen and (min-width: 1440px) {
   .navigation__button_type_signin {
     min-width: 152px
   }

@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Route, Switch, withRouter } from 'react-router-dom';
+import { Route, Switch, withRouter, useHistory } from 'react-router-dom';
 import ProtectedRoute from '../ProtectedRoute/ProtectedRoute';
 
 import './App.css';
@@ -13,6 +13,7 @@ import SigninPopup from '../SigninPopup/SigninPopup';
 
 function App() {
 
+  const history = useHistory()
   const [isSigninPopupOpen, setIsSigninPopupOpen] = useState(false);
   const [isSignupPopupOpen, setIsSignupPopupOpen] = useState(false);
   const [isLoggedIn, setIsLoggedIn] = useState(false)
@@ -34,10 +35,12 @@ function App() {
 
   const login = (event) => {
     setIsLoggedIn(true);
+    closeAllPopups();
   }
 
   const logout = (event) => {
     setIsLoggedIn(false);
+    history.push('/');
   }
 
   return (

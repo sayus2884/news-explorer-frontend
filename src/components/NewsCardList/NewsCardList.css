@@ -8,11 +8,16 @@
   }
 }
 
+@media screen and (max-width: 768px) {
+  .news-card-list {
+    padding-bottom: 7px;
+  }
+}
+
 .news-card-list__grid {
   padding: 0;
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  grid-template-rows: 576px;
   grid-gap: 16px;
   list-style: none;
   font-size: 0;
@@ -22,5 +27,12 @@
   .news-card-list__grid {
     grid-gap: 8px;
     grid-template-rows: 420px;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .news-card-list__grid {
+    grid-template-columns: 1fr;
+    grid-template-rows: 440px;
   }
 }

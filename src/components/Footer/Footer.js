@@ -10,26 +10,32 @@ function Footer() {
 
         <div className="footer__copyright">&copy; 2021 Supersite, Powered by News API</div>
 
-        <nav className="footer__navigator">
-          <ul className="footer__links">
-            <li className="footer__link-container">
+        <div className="footer__navs">
+          <nav className="footer__nav">
+            <ul className="footer__links footer__links_type_app">
+              <li className="footer__link-container">
               <a className="footer__link">Home</a>
-            </li>
-            <li className="footer__link-container">
+              </li>
+              <li className="footer__link-container">
               <a className="footer__link">Practicum by Yandex</a>
-            </li>
-            <li className="footer__link-container">
-              <a className="footer__link">
+              </li>
+            </ul>
+          </nav>
+          <nav className="footer__nav">
+            <ul className="footer__links">
+              <li className="footer__link-container">
+                <a className="footer__link">
                 <img src={githubLogo}/>
-              </a>
-            </li>
-            <li className="footer__link-container">
-              <a className="footer__link">
+                </a>
+              </li>
+              <li className="footer__link-container">
+                <a className="footer__link">
                 <img src={fbLogo}/>
-              </a>
-            </li>
-          </ul>
-        </nav>
+                </a>
+              </li>
+            </ul>
+          </nav>
+        </div>
 
       </div>
     </footer>

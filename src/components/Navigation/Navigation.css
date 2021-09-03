@@ -81,12 +81,23 @@
 }
 
 .navigation__button {
-  min-width: 100px;
+  min-height: 48px;
+  min-width: 112px;
+  padding: 0 17px;
   background-color: transparent;
   color: white;
   border: 1px solid;
   border-radius: 100px;
   height: 40px;
+
+  align-items: center;
+  display: flex;
+  justify-content: center;
+
+}
+
+.navigation__button_type_signin {
+  width: 176px
 }
 
 .navigation__button:hover {
@@ -96,4 +107,17 @@
 .navigation__button_theme_white {
   background-color: white;
   color: black;
+}
+
+.navigation__logout-icon {
+  padding-left: 10px;
+}
+
+.navigation__logout-icon > path {
+  fill: white;
+  margin-left: 5px;
+}
+
+.navigation__logout-icon_theme_white > path {
+  fill: black;
 }

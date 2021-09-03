@@ -1,5 +1,6 @@
 import './Navigation.css';
 import { withRouter, useLocation, Link } from 'react-router-dom';
+import { ReactComponent as Icon } from '../../images/logout.svg';
 
 function Navigation({ isSavedNews }) {
   return (
@@ -15,10 +16,11 @@ function Navigation({ isSavedNews }) {
             <Link to="/saved-news" className={`navigation__link ${isSavedNews && 'navigation__link_theme_white'}`}>Saved articles</Link>
           </li>
           <li className="navigation__link-container navigation__button-container">
-            <button className={`navigation__button ${isSavedNews && 'navigation__button_theme_white'}`}>Sign in</button>
+            <button className={`navigation__button navigation__button_type_signin ${isSavedNews && 'navigation__button_theme_white'}`}>Sign in</button>
           </li>
           <li className="navigation__link-container navigation__button-container">
-            <button className={`navigation__button ${isSavedNews && 'navigation__button_theme_white'}`}>Tom [Log out icon]</button>
+            <button className={`navigation__button ${isSavedNews && 'navigation__button_theme_white'}`}>Tom
+            <Icon className={`navigation__logout-icon ${isSavedNews && 'navigation__logout-icon_theme_white'}`}/></button>
           </li>
         </ul>
       </div>

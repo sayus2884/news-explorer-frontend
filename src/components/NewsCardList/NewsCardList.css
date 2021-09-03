@@ -2,7 +2,7 @@
   padding-bottom: 64px;
 }
 
-@media screen and (max-width: 1439px) {
+@media screen and (max-width: 1440px) {
   .news-card-list {
     padding-bottom: 32px;
   }
@@ -18,7 +18,7 @@
   font-size: 0;
 }
 
-@media screen and (max-width: 1439px) {
+@media screen and (max-width: 1440px) {
   .news-card-list__grid {
     grid-gap: 8px;
     grid-template-rows: 420px;

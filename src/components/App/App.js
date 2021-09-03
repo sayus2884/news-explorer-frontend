@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
 import { Route, Switch, withRouter, useHistory } from 'react-router-dom';
-import ProtectedRoute from '../ProtectedRoute/ProtectedRoute';
 
 import './App.css';
 
@@ -11,12 +10,16 @@ import SavedNews from '../SavedNews/SavedNews';
 import SignupPopup from '../SignupPopup/SignupPopup';
 import SigninPopup from '../SigninPopup/SigninPopup';
 
+import { news as fakeNews } from '../../utils/dummy';
+
 function App() {
 
   const history = useHistory()
   const [isSigninPopupOpen, setIsSigninPopupOpen] = useState(false);
   const [isSignupPopupOpen, setIsSignupPopupOpen] = useState(false);
-  const [isLoggedIn, setIsLoggedIn] = useState(false)
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
+  const [isSearching, setIsSearching] = useState(false);
+  const [news, setNews] = useState([]);
 
   const closeAllPopups = () => {
     setIsSigninPopupOpen(false);
@@ -43,6 +46,11 @@ function App() {
     history.push('/');
   }
 
+  const search = (keyword) => {
+    setIsSearching(true);
+    setNews(fakeNews);
+  }
+
   return (
     <div className="page">
       <NavigatorContext.Provider value={{
@@ -57,7 +65,7 @@ function App() {
           </Route>
 
           <Route exact path="/" key={document.location.href}>
-            <Main/>
+            <Main news={news} onSearch={search} isSearching={isSearching}/>
           </Route>
 
         </Switch>

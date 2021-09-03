@@ -3,7 +3,7 @@ import './Header.css';
 import Navigation from '../Navigation/Navigation';
 import SearchForm from '../SearchForm/SearchForm';
 
-function Header() {
+function Header({ onSearch }) {
   return (
     <header className="header">
         <Navigation />
@@ -16,7 +16,7 @@ function Header() {
             Find the latest news on any topic and save them in your personal account.
           </p>
 
-          <SearchForm />
+          <SearchForm onSearch={onSearch}/>
       </div>
     </header>
   );

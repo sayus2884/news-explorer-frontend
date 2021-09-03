@@ -32,11 +32,21 @@ function App() {
     setIsSignupPopupOpen(true);
   }
 
+  const login = (event) => {
+    setIsLoggedIn(true);
+  }
+
+  const logout = (event) => {
+    setIsLoggedIn(false);
+  }
+
   return (
     <div className="page">
       <NavigatorContext.Provider value={{
         openSignInModal,
-        openSignUpModal
+        openSignUpModal,
+        isLoggedIn,
+        logout
       }}>
         <Switch>
           <Route path="/saved-news" key={document.location.href}>
@@ -49,7 +59,7 @@ function App() {
 
         </Switch>
 
-        <SigninPopup isOpen={isSigninPopupOpen} onClose={closeAllPopups}/>
+        <SigninPopup isOpen={isSigninPopupOpen} onClose={closeAllPopups} onSubmit={login}/>
         <SignupPopup isOpen={isSignupPopupOpen} onClose={closeAllPopups}/>
       </NavigatorContext.Provider>
     </div>

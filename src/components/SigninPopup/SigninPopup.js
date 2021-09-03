@@ -5,12 +5,17 @@ import Popup from '../Popup/Popup';
 
 import { NavigatorContext } from '../../contexts/NavigatorContext.js'
 
-function SigninPopup({ isOpen, onClose }) {
+function SigninPopup({ isOpen, onClose, onSubmit }) {
   const { openSignUpModal } = useContext(NavigatorContext);
 
   const handleOpenSignUpModal = (event) => {
     event.preventDefault();
     openSignUpModal();
+  }
+
+  const handleOnSubmit = (event) => {
+    event.preventDefault();
+    onSubmit();
   }
 
   return (
@@ -19,7 +24,7 @@ function SigninPopup({ isOpen, onClose }) {
       isOpen={isOpen}
       onClose={onClose}
     >
-      <form className="popup__form form">
+      <form className="popup__form form" onSubmit={handleOnSubmit}>
 
         <label className="form__field">
           Email

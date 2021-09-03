@@ -7,11 +7,16 @@ import { NavigatorContext } from '../../contexts/NavigatorContext.js'
 
 function Navigation({ isSavedNews }) {
 
-  const { openSignInModal } = useContext(NavigatorContext);
+  const { openSignInModal, isLoggedIn, logout } = useContext(NavigatorContext);
 
   const handleOpenSignInModal = (event) => {
     event.preventDefault();
     openSignInModal();
+  }
+
+  const handleOnLogout = (event) => {
+    event.preventDefault();
+    logout();;
   }
 
   const activeStyle = isSavedNews ?
@@ -28,17 +33,30 @@ function Navigation({ isSavedNews }) {
           <li className={`navigation__link-container ${activeStyle}`}>
             <Link to="/" className={`navigation__link ${isSavedNews && 'navigation__link_theme_white'}`}>Home</Link>
           </li>
+
+          { isLoggedIn && (
           <li className="navigation__link-container">
             <Link to="/saved-news" className={`navigation__link ${isSavedNews && 'navigation__link_theme_white'}`}>Saved articles</Link>
           </li>
+          )}
+
+          { !isLoggedIn && (
           <li className="navigation__link-container navigation__button-container">
             <button className={`navigation__button navigation__button_type_signin ${isSavedNews && 'navigation__button_theme_white'}`}
             onClick={handleOpenSignInModal}>Sign in</button>
           </li>
+          )}
+
+
+          { isLoggedIn && (
+
           <li className="navigation__link-container navigation__button-container">
-            <button className={`navigation__button ${isSavedNews && 'navigation__button_theme_white'}`}>Tom
+            <button className={`navigation__button ${isSavedNews && 'navigation__button_theme_white'}`}
+            onClick={handleOnLogout}>Tom
             <Icon className={`navigation__logout-icon ${isSavedNews && 'navigation__logout-icon_theme_white'}`}/></button>
           </li>
+          )}
+
         </ul>
       </div>
     </div>

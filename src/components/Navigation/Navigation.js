@@ -7,6 +7,7 @@ import { NavigatorContext } from '../../contexts/NavigatorContext.js'
 
 function Navigation({ isSavedNews }) {
 
+  const { pathname } = useLocation();
   const { openSignInModal, isLoggedIn, logout } = useContext(NavigatorContext);
 
   const handleOpenSignInModal = (event) => {
@@ -30,12 +31,12 @@ function Navigation({ isSavedNews }) {
         <div className="navigation__logo">NewsExplorer</div>
 
         <ul className="navigation__links">
-          <li className={`navigation__link-container ${activeStyle}`}>
+          <li className={`navigation__link-container ${ pathname === '/' && activeStyle }`}>
             <Link to="/" className={`navigation__link ${isSavedNews && 'navigation__link_theme_white'}`}>Home</Link>
           </li>
 
           { isLoggedIn && (
-          <li className="navigation__link-container">
+          <li className={`navigation__link-container ${ pathname === '/saved-news' && activeStyle }`}>
             <Link to="/saved-news" className={`navigation__link ${isSavedNews && 'navigation__link_theme_white'}`}>Saved articles</Link>
           </li>
           )}

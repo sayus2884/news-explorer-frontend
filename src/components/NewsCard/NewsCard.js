@@ -2,8 +2,6 @@ import './NewsCard.css';
 
 function NewsCard({ news }) {
 
-  console.log(news);
-
   return (
     <div className="news-card">
       <img className="news-card___image" src={news.image}/>

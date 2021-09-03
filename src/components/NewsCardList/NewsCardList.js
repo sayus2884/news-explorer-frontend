@@ -9,7 +9,7 @@ function NewsCardList({ news }) {
       <ul className="news-card-list__grid">
         {
           news.map((item) => (
-            <NewsCard news={item}/>
+            <NewsCard news={item} key={item._id}/>
           ))
         }
       </ul>

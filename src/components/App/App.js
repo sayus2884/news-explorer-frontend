@@ -19,7 +19,7 @@ function App() {
   const [isSignupPopupOpen, setIsSignupPopupOpen] = useState(false);
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [isSearching, setIsSearching] = useState(false);
-  const [news, setNews] = useState([]);
+  const [news, setNews] = useState(null);
 
   const closeAllPopups = () => {
     setIsSigninPopupOpen(false);
@@ -48,7 +48,10 @@ function App() {
 
   const search = (keyword) => {
     setIsSearching(true);
-    setNews(fakeNews);
+    setTimeout(function(){
+      setIsSearching(false);
+      setNews(fakeNews);
+    }, 1000);
   }
 
   return (

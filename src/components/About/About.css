@@ -2,7 +2,7 @@
   padding: 80px 104px;
 }
 
-@media screen and (max-width: 1440px) {
+@media screen and (max-width: 1439px) {
   .about {
     padding: 40px;
   }
@@ -14,7 +14,7 @@
   justify-content:
 }
 
-@media screen and (max-width: 1440px) {
+@media screen and (max-width: 1439px) {
   .about__columns {
     min-height: 274px;
   }
@@ -26,7 +26,7 @@
   flex-direction: column;
 }
 
-@media screen and (max-width: 1440px) {
+@media screen and (max-width: 1439px) {
   .about__column {
     margin-right: 32px;
   }
@@ -41,7 +41,7 @@
   max-height: 464px;
 }
 
-@media screen and (max-width: 1440px) {
+@media screen and (max-width: 1439px) {
   .about__image {
     max-width: 232px;
     max-height: 232px;
@@ -57,7 +57,7 @@
   line-height: 46px;
 }
 
-@media screen and (max-width: 1440px) {
+@media screen and (max-width: 1439px) {
   .about__title {
     margin: 0;
     font-size: 30px;

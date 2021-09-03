@@ -8,7 +8,7 @@
   text-align: center;
 }
 
-@media screen and (max-width: 1440px) {
+@media screen and (max-width: 1439px) {
   .news-list {
     padding: 40px 40px 0;
   }
@@ -24,7 +24,7 @@
   line-height: 46px;
 }
 
-@media screen and (max-width: 1440px) {
+@media screen and (max-width: 1439px) {
   .news-list__title {
     margin: 0 0 32px;
   }
@@ -45,7 +45,7 @@
   line-height: 24px;
 }
 
-@media screen and (max-width: 1440px) {
+@media screen and (max-width: 1439px) {
   .news-list__button {
     min-height: 56px;
     margin: 0 0 40px;

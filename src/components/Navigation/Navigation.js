@@ -5,6 +5,8 @@ import { ReactComponent as Icon } from '../../images/logout.svg';
 
 import { NavigatorContext } from '../../contexts/NavigatorContext.js'
 
+import DropDownMenu from '../DropDownMenu/DropDownMenu';
+
 function Navigation({ isSavedNews }) {
 
   const { pathname } = useLocation();
@@ -26,9 +28,41 @@ function Navigation({ isSavedNews }) {
 
 
   return (
-    <div className={`navigation ${isSavedNews && 'navigation_theme_white'}`}>
+    <div className="navigation">
       <div className="navigation__container">
-        <div className="navigation__logo">NewsExplorer</div>
+        <div className={`navigation__logo ${isSavedNews && 'navigation__logo_theme_white'}`}>NewsExplorer</div>
+
+        <DropDownMenu>
+          <ul className="navigation__links drop-down-menu_links">
+            <li className="navigation__link-container">
+              <Link to="/" className={`navigation__link`}>Home</Link>
+            </li>
+
+            { isLoggedIn && (
+            <li className="navigation__link-container">
+              <Link to="/saved-news" className={`navigation__link`}>Saved articles</Link>
+            </li>
+            )}
+
+            { !isLoggedIn && (
+            <li className="navigation__link-container navigation__button-container">
+              <button className={`navigation__button navigation__button_type_signin`}
+              onClick={handleOpenSignInModal}>Sign in</button>
+            </li>
+            )}
+
+
+            { isLoggedIn && (
+
+            <li className="navigation__link-container navigation__button-container">
+              <button className={`navigation__button`}
+              onClick={handleOnLogout}>Tom
+              <Icon className={`navigation__logout-icon`}/></button>
+            </li>
+            )}
+
+          </ul>
+        </DropDownMenu>
 
         <ul className="navigation__links">
           <li className={`navigation__link-container ${ pathname === '/' && activeStyle }`}>

@@ -16,14 +16,17 @@ function PopupWithForm({ title, name, isOpen=false, onClose, onSubmit, buttonTex
 
       <div className="popup__overlay"></div>
 
-      <div className="popup__content">
-        <h2 className="popup__title">{title}</h2>
+      <div className="popup__container">
+
+        <div className="popup__content">
+          <h2 className="popup__title">{title}</h2>
 
 
-          {children}
+            {children}
 
 
-        <button className="popup__close-button" type="button" aria-label="close" title="close" onClick={handleOnClose}></button>
+          <button className="popup__close-button" type="button" aria-label="close" title="close" onClick={handleOnClose}></button>
+        </div>
       </div>
 
     </div>

@@ -22,9 +22,12 @@
   outline: none;
 }
 
-@media screen and (max-width: 600px) {
+@media screen and (max-width: 768px) {
   .popup__close-button {
+    height: 24px;
+    width: 24px;
     right: 0px;
-    top: -44px;
+    top: -56px;
+    margin: 16px;
   }
 }

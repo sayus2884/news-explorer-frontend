@@ -9,11 +9,6 @@
   box-shadow: inset 0px -1px 0px rgba(255, 255, 255, 0.2);
 }
 
-.navigation_theme_white {
-  box-shadow: inset 0px -1px 0px #D1D2D6;
-  color: black;
-}
-
 .navigation__logo {
   align-self: center;
   font-family: 'Roboto Slab';
@@ -21,8 +16,14 @@
   font-weight: bold;
   font-size: 20px;
   line-height: 24px;
+  color: white;
 
   padding: 30px 0 26px;
+}
+
+.navigation__logo_theme_white {
+  box-shadow: inset 0px -1px 0px #D1D2D6;
+  color: black;
 }
 
 @media screen and (max-width: 1440px) {
@@ -69,12 +70,6 @@
   align-items: center;
 }
 
-@media screen and (max-width: 768px) {
-  .navigation__links {
-    display: none;
-  }
-}
-
 .navigation__link-container {
   padding: 0 22px;
   min-height: 77px;
@@ -85,6 +80,12 @@
 @media screen and (max-width: 1440px) {
   .navigation__link-container {
     min-height: 63px;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .navigation__link-container {
+    padding: 0 0 22px;
   }
 }
 
@@ -125,6 +126,14 @@
   }
 }
 
+@media screen and (max-width: 768px) {
+  .navigation__button-container {
+    padding: 0;
+    width: 100%;
+  }
+}
+
+
 .navigation__button {
   min-height: 48px;
   min-width: 112px;
@@ -139,6 +148,12 @@
   display: flex;
   justify-content: center;
 
+}
+
+@media screen and (max-width: 768px) {
+  .navigation__button {
+    width: 100%;
+  }
 }
 
 .navigation__button_type_signin {

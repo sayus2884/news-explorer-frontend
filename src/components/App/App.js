@@ -41,6 +41,10 @@ function App() {
     closeAllPopups();
   }
 
+  const register = (event) => {
+    closeAllPopups();
+  }
+
   const logout = (event) => {
     setIsLoggedIn(false);
     history.push('/');
@@ -74,7 +78,7 @@ function App() {
         </Switch>
 
         <SigninPopup isOpen={isSigninPopupOpen} onClose={closeAllPopups} onSubmit={login}/>
-        <SignupPopup isOpen={isSignupPopupOpen} onClose={closeAllPopups}/>
+        <SignupPopup isOpen={isSignupPopupOpen} onClose={closeAllPopups} onSubmit={register}/>
       </NavigatorContext.Provider>
     </div>
   );

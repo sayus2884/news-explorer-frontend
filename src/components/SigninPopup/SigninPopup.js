@@ -12,7 +12,7 @@ function SigninPopup({ isOpen, onClose, onSubmit }) {
   const [email, setEmail] = useState("");
   const [isEmailInvalid, setIsEmailInvalid] = useState(false);
   const [password, setPassword] = useState("");
-  const [isPasswordInvalid, setPasswordInvalid] = useState(false);
+  const [isPasswordInvalid, setIsPasswordInvalid] = useState(false);
   const [isButtonInactive, setIsButtonInactive] = useState(true);
 
   const handleOpenSignUpModal = (event) => {
@@ -22,7 +22,6 @@ function SigninPopup({ isOpen, onClose, onSubmit }) {
 
   const handleOnSubmit = (event) => {
     event.preventDefault();
-    setEmail("asdasdadasd");
     resetForm();
     onSubmit();
 
@@ -44,7 +43,7 @@ function SigninPopup({ isOpen, onClose, onSubmit }) {
 
   const handlePasswordChange = (event) => {
     setPassword(event.target.value);
-    setPasswordInvalid(!event.target.validity.valid);
+    setIsPasswordInvalid(!event.target.validity.valid);
     handleInactiveButton();
   }
 
@@ -52,7 +51,7 @@ function SigninPopup({ isOpen, onClose, onSubmit }) {
     setEmail("");
     setIsEmailInvalid(false);
     setPassword("");
-    setPasswordInvalid(false);
+    setIsPasswordInvalid(false);
     setIsButtonInactive(true);
   }
 

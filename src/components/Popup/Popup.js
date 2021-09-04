@@ -4,7 +4,7 @@ function PopupWithForm({ title, name, isOpen=false, onClose, onSubmit, buttonTex
 
   const handleOnClose = (event) => {
     event.preventDefault();
-    onClose();
+    onClose(event);
   }
 
   const handleSubmit = (event) => {

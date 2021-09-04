@@ -70,6 +70,12 @@
   align-items: center;
 }
 
+@media screen and (max-width: 768px) {
+  .navigation__links {
+    display: none;
+  }
+}
+
 .navigation__link-container {
   padding: 0 22px;
   min-height: 77px;

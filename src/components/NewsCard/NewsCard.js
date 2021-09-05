@@ -51,7 +51,7 @@ function NewsCard({ news, isSavedNews }) {
         </div>
       </div>
 
-      <img className="news-card___image" src={news.image}/>
+      <img className="news-card___image" src={news.image} alt={news.title}/>
       <div className="news-card___content">
         <h3 className="news-card___date">{news.date}</h3>
         <h2 className="news-card___title">{news.title}</h2>

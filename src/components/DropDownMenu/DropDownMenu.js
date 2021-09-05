@@ -24,7 +24,7 @@ function DropDownMenu({ children }) {
       <div className={`drop-down-menu__container ${!isOpen && 'drop-down-menu_hidden'}`}>
         <div className="drop-down-menu__header">
           <div className="navigation__logo">NewsExplorer</div>
-          <img className="drop-down-menu__close-button" src={closeIcon}
+          <img className="drop-down-menu__close-button" src={closeIcon} alt="close button"
            onClick={handleClose}/>
         </div>
 

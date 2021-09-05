@@ -29,13 +29,13 @@ function Footer() {
               <li className="footer__link-container">
                 <a href="https://github.com/sayus2884" target="_blank" className="footer__link"
                 rel="noreferrer">
-                <img src={githubLogo}/>
+                <img src={githubLogo} alt="github logo"/>
                 </a>
               </li>
               <li className="footer__link-container">
                 <a href="https://fb.com/" target="_blank" className="footer__link"
                 rel="noreferrer">
-                <img src={fbLogo}/>
+                <img src={fbLogo} alt="facebook logo"/>
                 </a>
               </li>
             </ul>

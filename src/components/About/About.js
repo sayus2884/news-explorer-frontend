@@ -7,7 +7,7 @@ function About() {
     <div className="about">
       <div className="about__columns">
         <div className="about__column">
-          <img className="about__image" src={author}/>
+          <img className="about__image" src={author} alt="author"/>
         </div>
 
         <div className="about__column">

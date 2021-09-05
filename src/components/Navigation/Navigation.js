@@ -28,7 +28,7 @@ function Navigation({ isSavedNews }) {
 
 
   return (
-    <div className="navigation">
+    <div className={`navigation ${isSavedNews && 'navigation_theme_white'}`}>
       <div className="navigation__container">
         <div className={`navigation__logo ${isSavedNews && 'navigation__logo_theme_white'}`}>NewsExplorer</div>
 

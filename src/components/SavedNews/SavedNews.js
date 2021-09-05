@@ -14,7 +14,7 @@ function SavedNews() {
 
       <section className="news-list">
 
-        <NewsCardList news={news}/>
+        <NewsCardList news={news} isSavedNews={true}/>
 
       </section>
 

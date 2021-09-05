@@ -5,6 +5,8 @@
   background-color: white;
 
   font-size: 0;
+
+  position: relative;
 }
 
 @media screen and (max-width: 1440px) {
@@ -17,6 +19,104 @@
   .news-card {
     min-height: 440px;
   }
+}
+
+.news-card___actions {
+  position: absolute;
+  width: 100%;
+
+  font-family: 'Roboto';
+  font-weight: 500;
+  font-size: 12px;
+  line-height: 14px;
+}
+
+.news-card___actions-container {
+  padding: 24px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.news-card___keyword {
+  font-family: 'Roboto';
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 24px;
+
+  background: white;
+  border-radius: 10px;
+  padding: 8px 22px;
+  margin: 0;
+}
+
+.news-card___keyword_hidden {
+  visibility: hidden;
+}
+
+.news-card___buttons-container {
+  display: flex;
+}
+
+.news-card___tooltip {
+  opacity: 1;
+  font-family: 'Roboto';
+  font-weight: 500;
+  font-size: 12px;
+  line-height: 14px;
+  text-align: center;
+
+  background: white;
+  margin: 0 5px 0 0;
+  padding: 11px 26px;
+
+  border-radius: 10px;
+
+  display: flex;
+  align-items: center;
+
+  transition: visibility 0.3s, opacity 0.3s linear;
+}
+
+.news-card___tooltip_hidden {
+  opacity: 0;
+  visibility: hidden;
+}
+
+.news-card___button {
+  background: white;
+  border: none;
+  width: 40px;
+  height: 40px;
+  border-radius: 8px;
+}
+
+.news-card___button:hover {
+  cursor: pointer;
+}
+
+.button_bookmark {
+  background-repeat: no-repeat;
+  background-position: center;
+  background-image: url('../../images/bookmark.svg');
+}
+
+.button_bookmark:hover {
+  background-image: url('../../images/bookmark_hover.svg');
+}
+
+.button_bookmark_active {
+  background-image: url('../../images/bookmark_active.svg');
+}
+
+.button_delete {
+  background-repeat: no-repeat;
+  background-position: center;
+  background-image: url('../../images/delete.svg');
+}
+
+.button_delete:hover {
+  background-image: url('../../images/delete_hover.svg');
 }
 
 .news-card___image {

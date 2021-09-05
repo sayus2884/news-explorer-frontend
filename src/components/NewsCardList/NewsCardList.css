@@ -2,13 +2,13 @@
   padding-bottom: 64px;
 }
 
-@media screen and (max-width: 1440px) {
+@media screen and (max-width: 1439px) {
   .news-card-list {
     padding-bottom: 32px;
   }
 }
 
-@media screen and (max-width: 768px) {
+@media screen and (max-width: 767px) {
   .news-card-list {
     padding-bottom: 7px;
   }
@@ -23,14 +23,14 @@
   font-size: 0;
 }
 
-@media screen and (max-width: 1440px) {
+@media screen and (max-width: 1439px) {
   .news-card-list__grid {
     grid-gap: 8px;
     grid-template-rows: 420px;
   }
 }
 
-@media screen and (max-width: 768px) {
+@media screen and (max-width: 767px) {
   .news-card-list__grid {
     grid-template-columns: 1fr;
     grid-template-rows: 440px;

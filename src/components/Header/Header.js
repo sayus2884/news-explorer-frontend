@@ -1,3 +1,4 @@
+import React from 'react';
 import './Header.css';
 
 import Navigation from '../Navigation/Navigation';
@@ -10,7 +11,7 @@ function Header({ onSearch }) {
 
         <div className="header__container">
           <h1 className="header__title">
-            What's going on in the world?
+            What&apos;s going on in the world?
           </h1>
           <p className="header__sub-title">
             Find the latest news on any topic and save them in your personal account.

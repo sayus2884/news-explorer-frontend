@@ -1,3 +1,4 @@
+import React from 'react';
 import { useContext, useState } from 'react';
 import { isEmail } from 'validator';
 import './SigninPopup.css';

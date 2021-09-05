@@ -1,14 +1,11 @@
+import React from 'react';
 import './Popup.css';
 
-function PopupWithForm({ title, name, isOpen=false, onClose, onSubmit, buttonText="Save", children }) {
+function PopupWithForm({ title, name, isOpen=false, onClose, children }) {
 
   const handleOnClose = (event) => {
     event.preventDefault();
     onClose(event);
-  }
-
-  const handleSubmit = (event) => {
-    onSubmit(event);
   }
 
   return (

@@ -1,7 +1,7 @@
+import React from 'react';
 import './SavedNewsHeader.css';
 
 import Navigation from '../Navigation/Navigation';
-import SearchForm from '../SearchForm/SearchForm';
 
 function SavedNewsHeader() {
   return (

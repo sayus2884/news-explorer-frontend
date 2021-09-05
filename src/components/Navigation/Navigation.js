@@ -1,3 +1,4 @@
+import React from 'react';
 import { useContext } from 'react';
 import './Navigation.css';
 import { withRouter, useLocation, Link } from 'react-router-dom';
@@ -19,7 +20,7 @@ function Navigation({ isSavedNews }) {
 
   const handleOnLogout = (event) => {
     event.preventDefault();
-    logout();;
+    logout();
   }
 
   const activeStyle = isSavedNews ?

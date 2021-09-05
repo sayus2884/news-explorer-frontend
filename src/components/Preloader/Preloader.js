@@ -1,6 +1,7 @@
+import React from 'react';
 import './Preloader.css';
 
-function Preloader({ news }) {
+function Preloader() {
 
   return (
     <div className="circle-preloader__container">

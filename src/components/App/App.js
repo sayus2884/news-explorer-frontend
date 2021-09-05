@@ -36,21 +36,21 @@ function App() {
     setIsSignupPopupOpen(true);
   }
 
-  const login = (event) => {
+  const login = () => {
     setIsLoggedIn(true);
     closeAllPopups();
   }
 
-  const register = (event) => {
+  const register = () => {
     closeAllPopups();
   }
 
-  const logout = (event) => {
+  const logout = () => {
     setIsLoggedIn(false);
     history.push('/');
   }
 
-  const search = (keyword) => {
+  const search = () => {
     setIsSearching(true);
     setTimeout(function(){
       setIsSearching(false);

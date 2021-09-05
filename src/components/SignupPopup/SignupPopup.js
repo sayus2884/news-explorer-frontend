@@ -1,3 +1,4 @@
+import React from 'react';
 import { useContext, useState } from 'react';
 import { isEmail } from 'validator';
 import './SignupPopup.css';
@@ -74,7 +75,7 @@ function SignupPopup({ isOpen, onClose, onSubmit }) {
     <Popup
       title={"Sign up"}
       isOpen={isOpen}
-      onClose={onClose}
+      onClose={handleOnClose}
     >
       <form className="popup__form form" onSubmit={handleOnSubmit} noValidate>
 

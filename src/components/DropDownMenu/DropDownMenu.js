@@ -1,12 +1,9 @@
-import { useContext, useState } from 'react';
+import React, { useState } from 'react';
 import './DropDownMenu.css';
-import { withRouter, useLocation, Link } from 'react-router-dom';
 import { ReactComponent as BurgerIcon } from '../../images/menu.svg';
 import closeIcon from '../../images/back.png';
 
-import { NavigatorContext } from '../../contexts/NavigatorContext.js'
-
-function DropDownMenu({ isSavedNews, children }) {
+function DropDownMenu({ children }) {
 
   const [isOpen, setIsOpen] = useState(false);
 
@@ -37,4 +34,4 @@ function DropDownMenu({ isSavedNews, children }) {
   );
 }
 
-export default withRouter(DropDownMenu);
+export default DropDownMenu;

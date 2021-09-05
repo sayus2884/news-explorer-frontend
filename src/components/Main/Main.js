@@ -1,3 +1,4 @@
+import React from 'react';
 import { isDefined } from 'validate.js';
 
 import './Main.css';

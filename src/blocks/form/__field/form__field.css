@@ -1,0 +1,19 @@
+.form__field {
+  margin-bottom: 31px;
+  display: block;
+
+  font-family: 'Inter';
+  font-size: 12px;
+  line-height: 15px;
+
+  color: #2F71E5;
+}
+
+::placeholder {
+  color: black;
+  opacity: .2
+}
+
+.form__field:last-of-type {
+  margin-bottom: 39px;
+}

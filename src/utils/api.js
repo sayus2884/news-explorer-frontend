@@ -7,11 +7,11 @@ export const METHODS = {
 }
 
 const newsBaseUrl = 'https://newsapi.org/v2'
+const joniahNewsBaseUrl = 'https://api.joniah-news.students.nomoreparties.site/'
 
 class Api {
 
   getNews(q){
-
 
     const pageSize = 100;
     const from = new Date()
@@ -24,7 +24,6 @@ class Api {
       from: from.toISOString(),
       to: new Date().toISOString()
     });
-
 
     const url = newsBaseUrl + `/everything` + query;
 

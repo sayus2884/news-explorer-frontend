@@ -5,6 +5,7 @@ import { withRouter, useLocation, Link } from 'react-router-dom';
 import { ReactComponent as Icon } from '../../images/logout.svg';
 
 import { NavigatorContext } from '../../contexts/NavigatorContext.js'
+import { CurrentUserContext } from '../../contexts/CurrentUserContext.js'
 
 import DropDownMenu from '../DropDownMenu/DropDownMenu';
 
@@ -12,6 +13,7 @@ function Navigation({ isSavedNews }) {
 
   const { pathname } = useLocation();
   const { openSignInModal, isLoggedIn, logout } = useContext(NavigatorContext);
+  const { name } = useContext(CurrentUserContext);
 
   const handleOpenSignInModal = (event) => {
     event.preventDefault();
@@ -57,7 +59,7 @@ function Navigation({ isSavedNews }) {
 
             <li className="navigation__link-container navigation__button-container">
               <button className={`navigation__button`}
-              onClick={handleOnLogout}>Tom
+              onClick={handleOnLogout}>{name}
               <Icon className={`navigation__logout-icon`}/></button>
             </li>
             )}
@@ -88,7 +90,7 @@ function Navigation({ isSavedNews }) {
 
           <li className="navigation__link-container navigation__button-container">
             <button className={`navigation__button ${isSavedNews && 'navigation__button_theme_white'}`}
-            onClick={handleOnLogout}>Tom
+            onClick={handleOnLogout}>{name}
             <Icon className={`navigation__logout-icon ${isSavedNews && 'navigation__logout-icon_theme_white'}`}/></button>
           </li>
           )}

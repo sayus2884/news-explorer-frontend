@@ -26,7 +26,7 @@ function SignupPopup({ isOpen, onClose, onSubmit }) {
   const handleOnSubmit = (event) => {
     event.preventDefault();
     resetForm();
-    onSubmit();
+    onSubmit(email, password, username);
   }
 
   const handleInactiveButton = () => {

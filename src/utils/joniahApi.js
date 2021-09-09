@@ -28,8 +28,9 @@ class Api {
     return this._fetch( METHODS.POST, url, data);
   }
 
-  deleteNews(){
-    console.log("delete card");
+  deleteNews(id){
+    const url = `${this._baseUrl}/articles/${id}`;
+    return this._fetch(METHODS.DELETE, url)
   }
 
   _fetch(method, url, data = {}){

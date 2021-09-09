@@ -3,7 +3,7 @@ import './NewsCardList.css';
 
 import NewsCard from '../NewsCard/NewsCard';
 
-function NewsCardList({ news, isSavedNews=false }) {
+function NewsCardList({ news, isSavedNews=false, onDeleteNews=()=>{} }) {
 
 
   return (
@@ -14,6 +14,7 @@ function NewsCardList({ news, isSavedNews=false }) {
             <NewsCard
             news={item}
             isSavedNews={isSavedNews}
+            onDeleteNews={onDeleteNews}
             key={i}/>
           ))
         }

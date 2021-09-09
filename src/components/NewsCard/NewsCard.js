@@ -8,7 +8,7 @@ import { CurrentUserContext } from '../../contexts/CurrentUserContext.js'
 
 import joniahApi from '../../utils/joniahApi';
 
-function NewsCard({ news, isSavedNews }) {
+function NewsCard({ news, isSavedNews, onDeleteNews }) {
 
   const [hideTooltip, setHideTooltip] = useState(true);
   const [tooltipText, setTooltipText] = useState("");
@@ -37,7 +37,6 @@ function NewsCard({ news, isSavedNews }) {
     const keyword = localStorage.getItem("keyword");
 
     if (currentUser) {
-      console.log(keyword, news);
       joniahApi.saveNews({
         keyword,
         title,
@@ -54,6 +53,11 @@ function NewsCard({ news, isSavedNews }) {
 
       .catch(err => console.log(err));
     }
+  }
+
+  const handleDeleteClick = (event) => {
+    event.preventDefault();
+    onDeleteNews(news);
   }
 
   const formatDate = (date)=> {
@@ -97,6 +101,7 @@ function NewsCard({ news, isSavedNews }) {
               <button className="news-card___button button_delete"
               onMouseEnter={handleDeleteMouseEnter}
               onMouseLeave={handleMouseLeave}
+              onClick={handleDeleteClick}
               ></button>
             }
           </div>

@@ -7,23 +7,11 @@ import Footer from '../Footer/Footer';
 
 import { news } from '../../utils/dummy';
 
-import joniahApi from '../../utils/joniahApi';
-
-function SavedNews() {
-
-  const [savedNews, setSavedNews] = useState([]);
+function SavedNews({ onMount, savedNews, onDeleteNews }) {
 
   useEffect(() => {
-    getSavedNews()
+    onMount()
   }, [])
-
-  const getSavedNews = () => {
-    return joniahApi.getNews()
-    .then((news) => {
-      setSavedNews(news);
-      console.log(news);
-    });
-  }
 
   return (
     <div className="saved-news">
@@ -31,7 +19,7 @@ function SavedNews() {
 
       <section className="news-list">
 
-        <NewsCardList news={savedNews} isSavedNews={true}/>
+        <NewsCardList news={savedNews} isSavedNews={true} onDeleteNews={onDeleteNews}/>
 
       </section>
 

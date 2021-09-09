@@ -28,6 +28,7 @@ function App() {
   const [isSearching, setIsSearching] = useState(false);
   const [news, setNews] = useState(null);
   const [currentNews, setCurrentNews] = useState(null);
+  const [savedNews, setSavedNews] = useState([]);
   const [newsCount, setNewsCount] = useState(3);
 
   useEffect(() => {
@@ -174,6 +175,28 @@ function App() {
     setCurrentNews(currentNews);
   }
 
+  const getSavedNews = () => {
+    return joniahApi.getNews()
+    .then((news) => {
+      setSavedNews(news);
+    })
+
+    .catch((err) =>{
+      console.error(`Status code: ${err}.`)
+    });
+  }
+
+  const deleteSavedNews = (news) => {
+    return joniahApi.deleteNews(news._id)
+    .then((res) => {
+      setSavedNews((state) => state.filter((n) => n._id !== news._id));
+    })
+
+    .catch((err) =>{
+      console.error(`Status code: ${err}.`)
+    });
+  }
+
   return (
     <div className="page">
       <CurrentUserContext.Provider value={ currentUser }>
@@ -185,7 +208,10 @@ function App() {
         }}>
           <Switch>
             <ProtectedRoute path="/saved-news" key={document.location.href} loggedIn={isLoggedIn}>
-              <SavedNews/>
+              <SavedNews
+              savedNews={savedNews}
+              onMount={getSavedNews}
+              onDeleteNews={deleteSavedNews}/>
             </ProtectedRoute>
 
             <Route exact path="/" key={document.location.href}>

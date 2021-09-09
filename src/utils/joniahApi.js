@@ -18,46 +18,22 @@ class Api {
     return this._fetch( METHODS.GET, url);
   }
 
-  getInitialCards(){
-    const url = `${this._baseUrl}/cards`;
-    return this._fetch(METHODS.GET, url)
+  getNews(data){
+    const url = `${this._baseUrl}/articles`;
+    return this._fetch( METHODS.GET, url, data);
   }
 
-  editUserInfo(data){
-    const url = `${this._baseUrl}/users/me`;
-    return this._fetch(METHODS.PATCH, url, data)
+  saveNews(data){
+    const url = `${this._baseUrl}/articles`;
+    return this._fetch( METHODS.POST, url, data);
   }
 
-  addCard(data){
-    const url = `${this._baseUrl}/cards`;
-    return this._fetch(METHODS.POST, url, data)
-  }
-
-  deleteCard(id){
-    const url = `${this._baseUrl}/cards/${id}`;
-    return this._fetch(METHODS.DELETE, url)
-  }
-
-  changeLikeCardStatus(id, isLiked){
-    const url = `${this._baseUrl}/cards/${id}/likes`;
-
-    if (isLiked)
-      return this._fetch(METHODS.PUT, url)
-    else
-      return this._fetch(METHODS.DELETE, url)
-
-  }
-
-  updateAvatar(data){
-    const url = `${this._baseUrl}/users/me/avatar`;
-    return this._fetch(METHODS.PATCH, url, data)
+  deleteNews(){
+    console.log("delete card");
   }
 
   _fetch(method, url, data = {}){
     const token = localStorage.getItem('jwt');
-
-    console.log('token');
-    console.log(token);
 
     let params = {
       method,

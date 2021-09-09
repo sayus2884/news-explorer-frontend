@@ -21,7 +21,7 @@ import joniahApi from '../../utils/joniahApi';
 function App() {
 
   const history = useHistory()
-  const [currentUser, setCurrentUser] = useState(false);
+  const [currentUser, setCurrentUser] = useState(null);
   const [isSigninPopupOpen, setIsSigninPopupOpen] = useState(false);
   const [isSignupPopupOpen, setIsSignupPopupOpen] = useState(false);
   const [isLoggedIn, setIsLoggedIn] = useState(false);
@@ -32,6 +32,21 @@ function App() {
 
   useEffect(() => {
     tokenCheck();
+
+    if (localStorage.getItem("news")) {
+
+      const articles = JSON.parse(localStorage.getItem("news"));
+      const currentNews = [];
+
+
+
+      for (let i = 0; i < 3; i++) {
+        currentNews.push(articles[i]);
+      }
+
+      setNews(articles);
+      setCurrentNews(currentNews);
+    }
   }, [])
 
   const tokenCheck = () => {
@@ -66,8 +81,6 @@ function App() {
   }
 
   const login = (email, password) => {
-
-    console.log(email, password);
 
     authorize(email, password)
     .then((res) => {
@@ -110,6 +123,8 @@ function App() {
 
   const logout = () => {
     setIsLoggedIn(false);
+    setCurrentUser(null);
+    localStorage.removeItem("jwt");
     history.push('/');
   }
 
@@ -125,8 +140,10 @@ function App() {
         currentNews.push(articles[i]);
       }
 
-      setNews(currentNews);
-
+      setNews(articles);
+      setCurrentNews(currentNews);
+      localStorage.setItem('news', JSON.stringify(articles));
+      localStorage.setItem('keyword', query);
     })
 
     .catch(() => {
@@ -134,6 +151,7 @@ function App() {
     })
 
     .finally(() => {
+      setNewsCount(3);
       setIsSearching(false);
     });
   }
@@ -142,7 +160,8 @@ function App() {
     let count = newsCount + 3;
     const currentNews = [];
 
-    setNewsCount(count)
+    setNewsCount(count);
+
 
     if (count >= news.length) {
       count = news.length;
@@ -170,7 +189,7 @@ function App() {
             </ProtectedRoute>
 
             <Route exact path="/" key={document.location.href}>
-              <Main news={news}
+              <Main news={currentNews}
               onSearch={search}
               onSearchMore={showMore}
               isSearching={isSearching}

@@ -13,7 +13,7 @@ function Navigation({ isSavedNews }) {
 
   const { pathname } = useLocation();
   const { openSignInModal, isLoggedIn, logout } = useContext(NavigatorContext);
-  const { name } = useContext(CurrentUserContext);
+  const currentUser = useContext(CurrentUserContext);
 
   const handleOpenSignInModal = (event) => {
     event.preventDefault();
@@ -59,7 +59,7 @@ function Navigation({ isSavedNews }) {
 
             <li className="navigation__link-container navigation__button-container">
               <button className={`navigation__button`}
-              onClick={handleOnLogout}>{name}
+              onClick={handleOnLogout}>{ currentUser ? currentUser.name : ''}
               <Icon className={`navigation__logout-icon`}/></button>
             </li>
             )}
@@ -90,7 +90,7 @@ function Navigation({ isSavedNews }) {
 
           <li className="navigation__link-container navigation__button-container">
             <button className={`navigation__button ${isSavedNews && 'navigation__button_theme_white'}`}
-            onClick={handleOnLogout}>{name}
+            onClick={handleOnLogout}>{ currentUser ? currentUser.name : ''}
             <Icon className={`navigation__logout-icon ${isSavedNews && 'navigation__logout-icon_theme_white'}`}/></button>
           </li>
           )}

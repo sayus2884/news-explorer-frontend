@@ -27,7 +27,7 @@ function Main({ news, onSearch, onSearchMore, isSearching, maxNews }) {
 
         <NewsCardList news={news} />
 
-        { (news.length < allNews) &&
+        { (news.length < maxNews) &&
           <button className="news-list__button" onClick={onSearchMore}>Show more</button>
         }
 

@@ -22,7 +22,7 @@ function NewsCard({ news, isSavedNews }) {
   }
 
   return (
-    <div className="news-card">
+    <li className="news-card">
 
       <div className="news-card___actions">
         <div className="news-card___actions-container">
@@ -51,15 +51,15 @@ function NewsCard({ news, isSavedNews }) {
         </div>
       </div>
 
-      <img className="news-card___image" src={news.image} alt={news.title}/>
+      <img className="news-card___image" src={news.urlToImage} alt={news.title}/>
       <div className="news-card___content">
         <h3 className="news-card___date">{news.date}</h3>
         <h2 className="news-card___title">{news.title}</h2>
-        <p className="news-card___text">{news.text}</p>
+        <p className="news-card___text">{news.description}</p>
 
-        <figcaption className="news-card___source">{news.source}</figcaption>
+        <figcaption className="news-card___source">{news.source.name}</figcaption>
       </div>
-    </div>
+    </li>
   );
 }
 

@@ -10,7 +10,7 @@ import Footer from '../Footer/Footer';
 
 import Preloader from '../Preloader/Preloader';
 
-function Main({ news, onSearch, isSearching }) {
+function Main({ news, onSearch, onSearchMore, isSearching, maxNews }) {
 
   return (
     <div className="main">
@@ -23,9 +23,11 @@ function Main({ news, onSearch, isSearching }) {
 
         <h2 className="news-list__title">Search results</h2>
 
-        <NewsCardList news={news}/>
+        <NewsCardList news={news} />
 
-        <button className="news-list__button">Show more</button>
+        { (news.length < maxNews) &&
+          <button className="news-list__button" onClick={onSearchMore}>Show more</button>
+        }
 
       </section>
       }

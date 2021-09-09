@@ -5,15 +5,16 @@ import NewsCard from '../NewsCard/NewsCard';
 
 function NewsCardList({ news, isSavedNews=false }) {
 
+
   return (
     <div className="news-card-list">
       <ul className="news-card-list__grid">
         {
-          news.map((item) => (
+          news.map((item, i) => (
             <NewsCard
             news={item}
             isSavedNews={isSavedNews}
-            key={item._id}/>
+            key={i}/>
           ))
         }
       </ul>

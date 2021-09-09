@@ -10,7 +10,8 @@ import SavedNews from '../SavedNews/SavedNews';
 import SignupPopup from '../SignupPopup/SignupPopup';
 import SigninPopup from '../SigninPopup/SigninPopup';
 
-import { news as fakeNews } from '../../utils/dummy';
+// import { news as fakeNews } from '../../utils/dummy';
+import api from '../../utils/api';
 
 function App() {
 
@@ -20,6 +21,8 @@ function App() {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [isSearching, setIsSearching] = useState(false);
   const [news, setNews] = useState(null);
+  const [currentNews, setCurrentNews] = useState(null);
+  const [newsCount, setNewsCount] = useState(3);
 
   const closeAllPopups = () => {
     setIsSigninPopupOpen(false);
@@ -50,12 +53,41 @@ function App() {
     history.push('/');
   }
 
-  const search = () => {
+  const search = (query) => {
     setIsSearching(true);
-    setTimeout(function(){
+    api.getNews(query)
+
+    .then(({ articles }) => {
+      setNews(articles);
+      const currentNews = [];
+
+      for (let i = 0; i < 3; i++) {
+        currentNews.push(articles[i]);
+      }
+
+      setCurrentNews(currentNews);
+    })
+
+    .finally(() => {
       setIsSearching(false);
-      setNews(fakeNews);
-    }, 1000);
+    });
+  }
+
+  const showMore = () => {
+    let count = newsCount + 3;
+    const currentNews = [];
+
+    setNewsCount(count)
+
+    if (count >= news.length) {
+      count = news.length;
+    }
+
+    for (let i = 0; i < count; i++) {
+      currentNews.push(news[i]);
+    }
+
+    setCurrentNews(currentNews);
   }
 
   return (
@@ -72,7 +104,11 @@ function App() {
           </Route>
 
           <Route exact path="/" key={document.location.href}>
-            <Main news={news} onSearch={search} isSearching={isSearching}/>
+            <Main news={currentNews}
+            onSearch={search}
+            onSearchMore={showMore}
+            isSearching={isSearching}
+            maxNews={news ? news.length : 0}/>
           </Route>
 
         </Switch>

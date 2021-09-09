@@ -121,7 +121,9 @@
 
 .news-card___image {
   max-height: 272px;
+  min-height: 272px;
   object-fit: cover;
+  height: 100%;
   width: 100%;
   border-radius: 16px 16px 0 0;
 }
@@ -129,12 +131,14 @@
 @media screen and (max-width: 1439px) {
   .news-card___image {
     max-height: 150px;
+    min-height: 150px;
   }
 }
 
 @media screen and (max-width: 767px) {
   .news-card___image {
     max-height: 196px;
+    min-height: 196px;
   }
 }
 

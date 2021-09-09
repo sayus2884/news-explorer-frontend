@@ -15,7 +15,7 @@ function SavedNews({ onMount, savedNews, onDeleteNews }) {
 
   return (
     <div className="saved-news">
-      <SavedNewsHeader/>
+      <SavedNewsHeader news={savedNews}/>
 
       <section className="news-list">
 

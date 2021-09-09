@@ -1,6 +1,7 @@
 import React from 'react';
 import { useState } from 'react';
 import './NewsCard.css';
+import  moment from 'moment';
 
 function NewsCard({ news, isSavedNews }) {
 
@@ -19,6 +20,10 @@ function NewsCard({ news, isSavedNews }) {
 
   const handleMouseLeave = () => {
     setHideTooltip(true);
+  }
+
+  const formatDate = (date)=> {
+    return moment(date).format('MMMM D, YYYY')
   }
 
   return (
@@ -53,7 +58,7 @@ function NewsCard({ news, isSavedNews }) {
 
       <img className="news-card___image" src={news.urlToImage} alt={news.title}/>
       <div className="news-card___content">
-        <h3 className="news-card___date">{news.date}</h3>
+        <h3 className="news-card___date">{formatDate(news.publishedAt)}</h3>
         <h2 className="news-card___title">{news.title}</h2>
         <p className="news-card___text">{news.description}</p>
 

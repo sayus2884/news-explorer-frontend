@@ -10,7 +10,7 @@ import SavedNews from '../SavedNews/SavedNews';
 import SignupPopup from '../SignupPopup/SignupPopup';
 import SigninPopup from '../SigninPopup/SigninPopup';
 
-// import { news as fakeNews } from '../../utils/dummy';
+import { news as fakeNews } from '../../utils/dummy';
 import api from '../../utils/api';
 
 function App() {
@@ -58,14 +58,19 @@ function App() {
     api.getNews(query)
 
     .then(({ articles }) => {
-      setNews(articles);
+
       const currentNews = [];
 
       for (let i = 0; i < 3; i++) {
         currentNews.push(articles[i]);
       }
 
-      setCurrentNews(currentNews);
+      setNews(currentNews);
+
+    })
+
+    .catch(() => {
+      setNews(fakeNews);
     })
 
     .finally(() => {
@@ -104,7 +109,7 @@ function App() {
           </Route>
 
           <Route exact path="/" key={document.location.href}>
-            <Main news={currentNews}
+            <Main news={news}
             onSearch={search}
             onSearchMore={showMore}
             isSearching={isSearching}

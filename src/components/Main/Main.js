@@ -12,6 +12,8 @@ import Preloader from '../Preloader/Preloader';
 
 function Main({ news, onSearch, onSearchMore, isSearching, maxNews }) {
 
+  const allNews = localStorage.getItem("news") ? localStorage.getItem("news").length : 0;
+
   return (
     <div className="main">
       <Header onSearch={onSearch}/>
@@ -25,7 +27,7 @@ function Main({ news, onSearch, onSearchMore, isSearching, maxNews }) {
 
         <NewsCardList news={news} />
 
-        { (news.length < maxNews) &&
+        { (news.length < allNews) &&
           <button className="news-list__button" onClick={onSearchMore}>Show more</button>
         }
 

@@ -1,0 +1,15 @@
+.tooltip__link {
+  margin-top: 14px;
+
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: normal;
+  font-size: 18px;
+  line-height: 22px;
+
+  color: #2F71E5;
+}
+
+.tooltip__link:hover {
+  cursor: pointer;
+}

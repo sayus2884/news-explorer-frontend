@@ -1,0 +1,20 @@
+.tooltip__content {
+  position: relative;
+  width: 100%;
+  max-width: 358px;
+
+  flex-direction: column;
+  display: flex;
+
+  border-radius: 10px;
+  background-color: white;
+
+  padding: 43px 36px 51px;
+}
+
+
+@media screen and (max-width: 600px) {
+  .tooltip__content {
+    width: 282px;
+  }
+}

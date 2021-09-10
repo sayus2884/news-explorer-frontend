@@ -63,12 +63,14 @@ function SignupPopup({ isOpen, onClose, onSubmit }) {
     setIsEmailInvalid(false);
     setPassword("");
     setIsPasswordInvalid(false);
+    setUsername("");
+    setIsUsernameInvalid(false);
     setIsButtonInactive(true);
   }
 
   const handleOnClose = () => {
-    resetForm();
     onClose();
+    resetForm();
   }
 
   return (

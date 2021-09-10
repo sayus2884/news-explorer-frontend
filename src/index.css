@@ -2,6 +2,7 @@
 @import url("./vendor/fonts/fonts.css");
 @import url('./blocks/form/form.css');
 @import url('./blocks/popup/popup.css');
+@import url('./blocks/tooltip/tooltip.css');
 
 
 /* body {

@@ -13,6 +13,7 @@ import SavedNews from '../SavedNews/SavedNews';
 import SignupPopup from '../SignupPopup/SignupPopup';
 import SigninPopup from '../SigninPopup/SigninPopup';
 import ProtectedRoute from '../ProtectedRoute/ProtectedRoute';
+import SuccessTooltip from '../SuccessTooltip/SuccessTooltip';
 
 import { news as fakeNews } from '../../utils/dummy';
 import api from '../../utils/api';
@@ -24,6 +25,7 @@ function App() {
   const [currentUser, setCurrentUser] = useState(null);
   const [isSigninPopupOpen, setIsSigninPopupOpen] = useState(false);
   const [isSignupPopupOpen, setIsSignupPopupOpen] = useState(false);
+  const [isTooltipOpen, setIsTooltipOpen] = useState(false);
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [isSearching, setIsSearching] = useState(false);
   const [news, setNews] = useState(null);
@@ -69,6 +71,7 @@ function App() {
   const closeAllPopups = () => {
     setIsSigninPopupOpen(false);
     setIsSignupPopupOpen(false);
+    setIsTooltipOpen(false);
   }
 
   const openSignInModal = () => {
@@ -95,14 +98,13 @@ function App() {
     .then((res) => {
       setCurrentUser(res);
       setIsLoggedIn(true);
+      closeAllPopups();
     })
 
     .catch((err) => {
       console.log(err);
-      console.log("set tooltip fail");
-    })
+    });
 
-    .finally(() => closeAllPopups());
   }
 
   const signup = (email, password, username) => {
@@ -111,15 +113,15 @@ function App() {
 
     .then((res) => {
       if (res) {
-        console.log("set tooltip");
+        closeAllPopups();
+        setIsTooltipOpen(true);
       }
     })
 
-    .catch(() => {
-      console.log("set tooltip fail");
+    .catch((err) => {
+      console.log(err);
     });
 
-    closeAllPopups();
   }
 
   const logout = () => {
@@ -226,6 +228,9 @@ function App() {
 
           <SigninPopup isOpen={isSigninPopupOpen} onClose={closeAllPopups} onSubmit={login}/>
           <SignupPopup isOpen={isSignupPopupOpen} onClose={closeAllPopups} onSubmit={signup}/>
+          <SuccessTooltip isOpen={isTooltipOpen}
+            onClose={closeAllPopups}
+            openSignInModal={openSignInModal}/>
         </NavigatorContext.Provider>
       </CurrentUserContext.Provider>
     </div>

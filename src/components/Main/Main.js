@@ -11,7 +11,7 @@ import Footer from '../Footer/Footer';
 import Preloader from '../Preloader/Preloader';
 import NotFound from '../NotFound/NotFound';
 
-function Main({ news, onSearch, onSearchMore, onBookmarkClick, isSearching, maxNews, savedNews }) {
+function Main({ news, onSearch, onSearchMore, onBookmarkClick, isSearching, maxNews, savedNews, isFetchingError }) {
 
   const allNews = localStorage.getItem("news") ? localStorage.getItem("news").length : 0;
 
@@ -22,7 +22,19 @@ function Main({ news, onSearch, onSearchMore, onBookmarkClick, isSearching, maxN
       { isSearching && <Preloader/>}
 
 
-      { isDefined(news) && news.length === 0 && <NotFound/> }
+      { isDefined(news) && news.length === 0 &&
+        <NotFound
+          title="Nothing found"
+          description="Sorry, but nothing matched your search terms."
+          />
+      }
+
+      { isFetchingError &&
+        <NotFound
+          title="Server Error"
+          description="Sorry, something went wrong during the request. There may be a connection issue or the server may be down. Please try again later."
+          />
+      }
 
       { isDefined(news) && news.length > 0 &&
       <section className="news-list">

@@ -31,6 +31,7 @@ function App() {
   const [isTooltipOpen, setIsTooltipOpen] = useState(false);
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [isSearching, setIsSearching] = useState(false);
+  const [isFetchingError, setIsFetchingError] = useState(false);
   const [news, setNews] = useState(null);
   const [currentNews, setCurrentNews] = useState(null);
   const [savedNews, setSavedNews] = useState([]);
@@ -141,6 +142,7 @@ function App() {
 
   const search = (query) => {
     setIsSearching(true);
+    setIsFetchingError(false);
     api.getNews(query)
 
     .then(({ articles }) => {
@@ -158,7 +160,7 @@ function App() {
     })
 
     .catch((err) => {
-      setNews([]);
+      setIsFetchingError(true);
       console.error(err);
     })
 
@@ -260,7 +262,8 @@ function App() {
             <ProtectedRoute path="/saved-news" key={document.location.href} loggedIn={isLoggedIn}>
               <SavedNews
               savedNews={savedNews}
-              onDeleteNews={deleteSavedNews}/>
+              onDeleteNews={deleteSavedNews}
+              isFetchingError={isFetchingError}/>
             </ProtectedRoute>
 
             <Route exact path="/" key={document.location.href}>
@@ -270,7 +273,8 @@ function App() {
               onSearchMore={showMore}
               onBookmarkClick={toggleBookmark}
               isSearching={isSearching}
-              maxNews={news ? news.length : 0}/>
+              maxNews={news ? news.length : 0}
+              isFetchingError={isFetchingError}/>
             </Route>
 
           </Switch>

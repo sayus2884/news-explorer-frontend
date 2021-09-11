@@ -8,7 +8,7 @@ import { CurrentUserContext } from '../../contexts/CurrentUserContext.js'
 
 import joniahApi from '../../utils/joniahApi';
 
-function NewsCard({ news, isSavedNews, onDeleteNews }) {
+function NewsCard({ news, isSavedNewsHeader, isSavedNews, onDeleteNews }) {
 
   const [hideTooltip, setHideTooltip] = useState(true);
   const [tooltipText, setTooltipText] = useState("");
@@ -31,6 +31,7 @@ function NewsCard({ news, isSavedNews, onDeleteNews }) {
     setHideTooltip(true);
   }
 
+  // Note: Move to App.js
   const handleBookmarkClick = (event) =>{
     event.preventDefault();
     const { title, urlToImage, publishedAt, description, source, url} = news;
@@ -83,21 +84,21 @@ function NewsCard({ news, isSavedNews, onDeleteNews }) {
       <div className="news-card___actions">
         <div className="news-card___actions-container">
 
-            <p className={`news-card___keyword ${!isSavedNews && 'news-card___keyword_hidden'}`}>{newNews.keyword}</p>
+            <p className={`news-card___keyword ${!isSavedNewsHeader && 'news-card___keyword_hidden'}`}>{newNews.keyword}</p>
 
           <div className="news-card___buttons-container">
 
             <p className={`news-card___tooltip ${hideTooltip && 'news-card___tooltip_hidden'}`}>{tooltipText}</p>
 
-            { !isSavedNews &&
-              <button className="news-card___button button_bookmark"
+            { !isSavedNewsHeader &&
+              <button className={`news-card___button button_bookmark ${ isSavedNews && 'button_bookmark_active'}`}
               onMouseEnter={handleBookmarkMouseEnter}
               onMouseLeave={handleMouseLeave}
               onClick={handleBookmarkClick}
               ></button>
             }
 
-            { isSavedNews &&
+            { isSavedNewsHeader &&
               <button className="news-card___button button_delete"
               onMouseEnter={handleDeleteMouseEnter}
               onMouseLeave={handleMouseLeave}

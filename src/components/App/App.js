@@ -41,15 +41,16 @@ function App() {
       const articles = JSON.parse(localStorage.getItem("news"));
       const currentNews = [];
 
-
-
       for (let i = 0; i < 3; i++) {
         currentNews.push(articles[i]);
       }
 
       setNews(articles);
       setCurrentNews(currentNews);
+
+      getSavedNews()
     }
+
   }, [])
 
   const tokenCheck = () => {
@@ -137,6 +138,8 @@ function App() {
 
     .then(({ articles }) => {
 
+      console.log(articles);
+
       const currentNews = [];
 
       for (let i = 0; i < 3; i++) {
@@ -148,6 +151,8 @@ function App() {
       localStorage.setItem('news', JSON.stringify(articles));
       localStorage.setItem('keyword', query);
     })
+
+    .then()
 
     .catch(() => {
       setNews(fakeNews);
@@ -179,8 +184,9 @@ function App() {
 
   const getSavedNews = () => {
     return joniahApi.getNews()
-    .then((news) => {
-      setSavedNews(news);
+    .then((savedNews) => {
+      setSavedNews(savedNews);
+      return savedNews;
     })
 
     .catch((err) =>{
@@ -218,6 +224,7 @@ function App() {
 
             <Route exact path="/" key={document.location.href}>
               <Main news={currentNews}
+              savedNews={savedNews}
               onSearch={search}
               onSearchMore={showMore}
               isSearching={isSearching}

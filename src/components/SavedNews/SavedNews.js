@@ -19,7 +19,7 @@ function SavedNews({ onMount, savedNews, onDeleteNews }) {
 
       <section className="news-list">
 
-        <NewsCardList news={savedNews} isSavedNews={true} onDeleteNews={onDeleteNews}/>
+        <NewsCardList news={savedNews} isSavedNewsHeader={true} onDeleteNews={onDeleteNews} savedNews={[]}/>
 
       </section>
 

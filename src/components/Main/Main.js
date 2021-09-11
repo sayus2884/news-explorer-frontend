@@ -10,7 +10,7 @@ import Footer from '../Footer/Footer';
 
 import Preloader from '../Preloader/Preloader';
 
-function Main({ news, onSearch, onSearchMore, isSearching, maxNews }) {
+function Main({ news, onSearch, onSearchMore, isSearching, maxNews, savedNews }) {
 
   const allNews = localStorage.getItem("news") ? localStorage.getItem("news").length : 0;
 
@@ -25,7 +25,7 @@ function Main({ news, onSearch, onSearchMore, isSearching, maxNews }) {
 
         <h2 className="news-list__title">Search results</h2>
 
-        <NewsCardList news={news} />
+        <NewsCardList news={news} savedNews={savedNews}/>
 
         { (news.length < maxNews) &&
           <button className="news-list__button" onClick={onSearchMore}>Show more</button>

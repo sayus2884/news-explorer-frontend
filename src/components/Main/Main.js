@@ -9,6 +9,7 @@ import About from '../About/About';
 import Footer from '../Footer/Footer';
 
 import Preloader from '../Preloader/Preloader';
+import NotFound from '../NotFound/NotFound';
 
 function Main({ news, onSearch, onSearchMore, onBookmarkClick, isSearching, maxNews, savedNews }) {
 
@@ -20,7 +21,10 @@ function Main({ news, onSearch, onSearchMore, onBookmarkClick, isSearching, maxN
 
       { isSearching && <Preloader/>}
 
-      { isDefined(news) &&
+
+      { isDefined(news) && news.length === 0 && <NotFound/> }
+
+      { isDefined(news) && news.length > 0 &&
       <section className="news-list">
 
         <h2 className="news-list__title">Search results</h2>

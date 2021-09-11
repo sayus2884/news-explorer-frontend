@@ -158,6 +158,7 @@ function App() {
     })
 
     .catch((err) => {
+      setNews([]);
       console.error(err);
     })
 

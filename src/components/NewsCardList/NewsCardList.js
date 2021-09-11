@@ -2,7 +2,7 @@ import React from 'react';
 import './NewsCardList.css';
 
 import NewsCard from '../NewsCard/NewsCard';
-import { isSavedNews } from '../../utils/helpers';
+import { findSavedNews } from '../../utils/helpers';
 
 function NewsCardList({ news, isSavedNewsHeader=false, onBookmarkClick=()=>{}, onDeleteNews=()=>{}, savedNews=[] }) {
 
@@ -15,7 +15,7 @@ function NewsCardList({ news, isSavedNewsHeader=false, onBookmarkClick=()=>{}, o
             return (
             <NewsCard
             news={article}
-            isSavedNews={isSavedNews(article, savedNews)}
+            isSavedNews={!!findSavedNews(article, savedNews)}
             isSavedNewsHeader={isSavedNewsHeader}
             onDeleteNews={onDeleteNews}
             onBookmarkClick={onBookmarkClick}

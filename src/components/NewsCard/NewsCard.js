@@ -31,10 +31,9 @@ function NewsCard({ news, isSavedNewsHeader, isSavedNews, onDeleteNews, onBookma
     setHideTooltip(true);
   }
 
-  // Note: Move to App.js
   const handleBookmarkClick = (event) =>{
     event.preventDefault();
-    onBookmarkClick();
+    onBookmarkClick(news);
   }
 
   const handleDeleteClick = (event) => {

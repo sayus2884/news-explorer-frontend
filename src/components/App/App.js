@@ -19,6 +19,8 @@ import { news as fakeNews } from '../../utils/dummy';
 import api from '../../utils/api';
 import joniahApi from '../../utils/joniahApi';
 
+import { findSavedNews } from '../../utils/helpers';
+
 function App() {
 
   const history = useHistory()
@@ -34,6 +36,7 @@ function App() {
   const [newsCount, setNewsCount] = useState(3);
 
   useEffect(() => {
+    resetSearch();
     tokenCheck();
 
     if (localStorage.getItem("news")) {
@@ -48,7 +51,7 @@ function App() {
       setNews(articles);
       setCurrentNews(currentNews);
 
-      getSavedNews()
+      initSavedNews();
     }
 
   }, [])
@@ -138,8 +141,6 @@ function App() {
 
     .then(({ articles }) => {
 
-      console.log(articles);
-
       const currentNews = [];
 
       for (let i = 0; i < 3; i++) {
@@ -154,14 +155,18 @@ function App() {
 
     .then()
 
-    .catch(() => {
-      setNews(fakeNews);
+    .catch((err) => {
+      console.error(err);
     })
 
     .finally(() => {
-      setNewsCount(3);
-      setIsSearching(false);
+      resetSearch();
     });
+  }
+
+  const resetSearch = () => {
+    setNewsCount(3);
+    setIsSearching(false);
   }
 
   const showMore = () => {
@@ -182,7 +187,7 @@ function App() {
     setCurrentNews(currentNews);
   }
 
-  const getSavedNews = () => {
+  const initSavedNews = () => {
     return joniahApi.getNews()
     .then((savedNews) => {
       setSavedNews(savedNews);
@@ -194,9 +199,7 @@ function App() {
     });
   }
 
-  // NOTE: Continue here
-  const saveNews = (event) =>{
-    event.preventDefault();
+  const saveNews = (news) =>{
     const { title, urlToImage, publishedAt, description, source, url} = news;
     const keyword = localStorage.getItem("keyword");
 
@@ -212,7 +215,8 @@ function App() {
       })
 
       .then((article) => {
-        console.log(article);
+        const newSavedNews = [...savedNews, article]
+        setSavedNews(newSavedNews);
       })
 
       .catch(err => console.log(err));
@@ -220,6 +224,7 @@ function App() {
   }
 
   const deleteSavedNews = (news) => {
+    console.log(news);
     return joniahApi.deleteNews(news._id)
     .then((res) => {
       setSavedNews((state) => state.filter((n) => n._id !== news._id));
@@ -228,6 +233,16 @@ function App() {
     .catch((err) =>{
       console.error(`Status code: ${err}.`)
     });
+  }
+
+  const toggleBookmark = (news) => {
+    const savedArticle = findSavedNews(news, savedNews);
+
+    if (savedArticle) {
+      deleteSavedNews(savedArticle);
+    } else {
+      saveNews(news);
+    }
   }
 
   return (
@@ -243,7 +258,7 @@ function App() {
             <ProtectedRoute path="/saved-news" key={document.location.href} loggedIn={isLoggedIn}>
               <SavedNews
               savedNews={savedNews}
-              onMount={getSavedNews}
+              onMount={initSavedNews}
               onDeleteNews={deleteSavedNews}/>
             </ProtectedRoute>
 
@@ -252,7 +267,7 @@ function App() {
               savedNews={savedNews}
               onSearch={search}
               onSearchMore={showMore}
-              onBookmarkClick={saveNews}
+              onBookmarkClick={toggleBookmark}
               isSearching={isSearching}
               maxNews={news ? news.length : 0}/>
             </Route>

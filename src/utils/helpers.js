@@ -12,8 +12,7 @@ export const toOriginalNewsProps = (news) => {
   }
 }
 
-export const isSavedNews = (article, savedNews) => {
-
+export const findSavedNews = (article, savedNews) => {
   const news = savedNews.find((savedArticle) => {
     const newSavedArticle = toOriginalNewsProps(savedArticle);
     const titleMatch = newSavedArticle.title === article.title;
@@ -22,5 +21,6 @@ export const isSavedNews = (article, savedNews) => {
     return titleMatch && dateMatch;
   })
 
-  return !!news;
+
+  return news;
 }

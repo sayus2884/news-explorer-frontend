@@ -4,7 +4,7 @@ import './NewsCardList.css';
 import NewsCard from '../NewsCard/NewsCard';
 import { isSavedNews } from '../../utils/helpers';
 
-function NewsCardList({ news, isSavedNewsHeader=false, onDeleteNews=()=>{}, savedNews }) {
+function NewsCardList({ news, isSavedNewsHeader=false, onBookmarkClick=()=>{}, onDeleteNews=()=>{}, savedNews=[] }) {
 
   return (
     <div className="news-card-list">
@@ -18,6 +18,7 @@ function NewsCardList({ news, isSavedNewsHeader=false, onDeleteNews=()=>{}, save
             isSavedNews={isSavedNews(article, savedNews)}
             isSavedNewsHeader={isSavedNewsHeader}
             onDeleteNews={onDeleteNews}
+            onBookmarkClick={onBookmarkClick}
             key={i}/>
           )})
         }

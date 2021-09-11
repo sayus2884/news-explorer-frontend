@@ -194,6 +194,31 @@ function App() {
     });
   }
 
+  // NOTE: Continue here
+  const saveNews = (event) =>{
+    event.preventDefault();
+    const { title, urlToImage, publishedAt, description, source, url} = news;
+    const keyword = localStorage.getItem("keyword");
+
+    if (currentUser) {
+      joniahApi.saveNews({
+        keyword,
+        title,
+        text: description,
+        date: publishedAt,
+        source: source.name,
+        link: url,
+        image: urlToImage
+      })
+
+      .then((article) => {
+        console.log(article);
+      })
+
+      .catch(err => console.log(err));
+    }
+  }
+
   const deleteSavedNews = (news) => {
     return joniahApi.deleteNews(news._id)
     .then((res) => {
@@ -227,6 +252,7 @@ function App() {
               savedNews={savedNews}
               onSearch={search}
               onSearchMore={showMore}
+              onBookmarkClick={saveNews}
               isSearching={isSearching}
               maxNews={news ? news.length : 0}/>
             </Route>

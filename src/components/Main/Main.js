@@ -11,7 +11,7 @@ import Footer from '../Footer/Footer';
 import Preloader from '../Preloader/Preloader';
 import NotFound from '../NotFound/NotFound';
 
-function Main({ news, onSearch, onSearchMore, onBookmarkClick, isSearching, maxNews, savedNews, isFetchingError }) {
+function Main({ news, onSearch, onSearchMore, onBookmarkClick, isSearching, maxNews, savedNews, isFetchingError, totalResults }) {
 
   const allNews = localStorage.getItem("news") ? localStorage.getItem("news").length : 0;
 
@@ -39,7 +39,7 @@ function Main({ news, onSearch, onSearchMore, onBookmarkClick, isSearching, maxN
       { isDefined(news) && news.length > 0 &&
       <section className="news-list">
 
-        <h2 className="news-list__title">Search results</h2>
+        <h2 className="news-list__title">{totalResults} Search results</h2>
 
         <NewsCardList news={news} savedNews={savedNews} onBookmarkClick={onBookmarkClick}/>
 

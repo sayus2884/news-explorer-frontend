@@ -33,6 +33,7 @@ function App() {
   const [isSearching, setIsSearching] = useState(false);
   const [isFetchingError, setIsFetchingError] = useState(false);
   const [news, setNews] = useState(null);
+  const [totalResults, setTotalResults] = useState(0);
   const [currentNews, setCurrentNews] = useState(null);
   const [savedNews, setSavedNews] = useState([]);
   const [newsCount, setNewsCount] = useState(3);
@@ -142,10 +143,11 @@ function App() {
 
   const search = (query) => {
     setIsSearching(true);
+    setTotalResults(0);
     setIsFetchingError(false);
     api.getNews(query)
 
-    .then(({ articles }) => {
+    .then(({ articles, totalResults }) => {
 
       const currentNews = [];
 
@@ -154,9 +156,10 @@ function App() {
       }
 
       setNews(articles);
+      setTotalResults(totalResults);
       setCurrentNews(currentNews);
       localStorage.setItem('news', JSON.stringify(articles));
-      localStorage.setItem('keyword', capitalizeFirstLetter(query));
+      localStorage.setItem('keyword', query ? capitalizeFirstLetter(query) : '');
     })
 
     .catch((err) => {
@@ -269,6 +272,7 @@ function App() {
             <Route exact path="/" key={document.location.href}>
               <Main news={currentNews}
               savedNews={savedNews}
+              totalResults={totalResults}
               onSearch={search}
               onSearchMore={showMore}
               onBookmarkClick={toggleBookmark}

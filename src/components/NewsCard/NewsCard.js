@@ -93,7 +93,11 @@ function NewsCard({ news, isSavedNewsHeader, isSavedNews, onDeleteNews, onBookma
       <img className="news-card___image" src={newNews.urlToImage} alt={newNews.title}/>
       <div className="news-card___content">
         <h3 className="news-card___date">{formatDate(newNews.publishedAt)}</h3>
-        <h2 className="news-card___title">{newNews.title}</h2>
+        <h2 className="news-card___title">
+          <a className="news-card___link" href={newNews.url} target="_blank" rel="noreferrer">
+            {newNews.title}
+          </a>
+        </h2>
         <p className="news-card___text">{newNews.description}</p>
 
         <figcaption className="news-card___source">{newNews.source.name}</figcaption>

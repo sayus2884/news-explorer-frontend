@@ -201,7 +201,16 @@
   }
 }
 
-.news-card___text{
+.news-card___link {
+  text-decoration: none;
+  color: black;
+}
+
+.news-card___link:hover {
+  text-decoration: underline;
+}
+
+.news-card___text {
   margin: 16px 0 0;
 
   font-family: 'Roboto';

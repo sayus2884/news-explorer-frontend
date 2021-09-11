@@ -36,7 +36,7 @@ function SavedNewsHeader({ news }) {
 
     let text = '';
 
-    if (keywords.length < 2 && keywords.length > 1) {
+    if (keywords.length < 2 && keywords.length > 0) {
       text = `${keywords[0].name}`
     }
 

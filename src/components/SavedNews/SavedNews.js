@@ -7,11 +7,7 @@ import Footer from '../Footer/Footer';
 
 import { news } from '../../utils/dummy';
 
-function SavedNews({ onMount, savedNews, onDeleteNews }) {
-
-  useEffect(() => {
-    onMount()
-  }, [])
+function SavedNews({ savedNews, onDeleteNews }) {
 
   return (
     <div className="saved-news">

@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Route, Switch, withRouter, useHistory } from 'react-router-dom';
+import { Route, Switch, withRouter, useHistory, useLocation } from 'react-router-dom';
 
 import './App.css';
 
@@ -24,6 +24,7 @@ import { findSavedNews } from '../../utils/helpers';
 function App() {
 
   const history = useHistory()
+  const location = useLocation();
   const [currentUser, setCurrentUser] = useState(null);
   const [isSigninPopupOpen, setIsSigninPopupOpen] = useState(false);
   const [isSignupPopupOpen, setIsSignupPopupOpen] = useState(false);
@@ -36,8 +37,8 @@ function App() {
   const [newsCount, setNewsCount] = useState(3);
 
   useEffect(() => {
-    resetSearch();
     tokenCheck();
+    resetSearch();
 
     if (localStorage.getItem("news")) {
 
@@ -57,6 +58,8 @@ function App() {
   }, [])
 
   const tokenCheck = () => {
+    const path = location.pathname;
+
     if (localStorage.getItem("jwt")) {
       const jwt = localStorage.getItem('jwt');
       checkToken(jwt)
@@ -64,6 +67,7 @@ function App() {
         if (user) {
           setCurrentUser(user);
           setIsLoggedIn(true);
+          history.push(path);
         }
       })
       .catch((err) => {
@@ -153,8 +157,6 @@ function App() {
       localStorage.setItem('keyword', query);
     })
 
-    .then()
-
     .catch((err) => {
       console.error(err);
     })
@@ -224,7 +226,6 @@ function App() {
   }
 
   const deleteSavedNews = (news) => {
-    console.log(news);
     return joniahApi.deleteNews(news._id)
     .then((res) => {
       setSavedNews((state) => state.filter((n) => n._id !== news._id));
@@ -258,7 +259,6 @@ function App() {
             <ProtectedRoute path="/saved-news" key={document.location.href} loggedIn={isLoggedIn}>
               <SavedNews
               savedNews={savedNews}
-              onMount={initSavedNews}
               onDeleteNews={deleteSavedNews}/>
             </ProtectedRoute>
 

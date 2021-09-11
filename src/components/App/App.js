@@ -19,7 +19,7 @@ import { news as fakeNews } from '../../utils/dummy';
 import api from '../../utils/api';
 import joniahApi from '../../utils/joniahApi';
 
-import { findSavedNews } from '../../utils/helpers';
+import { findSavedNews, capitalizeFirstLetter } from '../../utils/helpers';
 
 function App() {
 
@@ -154,7 +154,7 @@ function App() {
       setNews(articles);
       setCurrentNews(currentNews);
       localStorage.setItem('news', JSON.stringify(articles));
-      localStorage.setItem('keyword', query);
+      localStorage.setItem('keyword', capitalizeFirstLetter(query));
     })
 
     .catch((err) => {

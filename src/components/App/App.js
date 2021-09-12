@@ -54,7 +54,9 @@ function App() {
       setNews(articles);
       setCurrentNews(currentNews);
 
-      initSavedNews();
+      if (isLoggedIn) {
+        initSavedNews();
+      }
     }
 
   }, [])
@@ -94,7 +96,7 @@ function App() {
     setIsSignupPopupOpen(true);
   }
 
-  const login = (email, password) => {
+  const login = (email, password, resetForm, onError) => {
 
     authorize(email, password)
     .then((res) => {
@@ -106,18 +108,26 @@ function App() {
     .then(() => joniahApi.getUserInfo())
 
     .then((res) => {
-      setCurrentUser(res);
-      setIsLoggedIn(true);
-      closeAllPopups();
+      if (res) {
+        setCurrentUser(res);
+        setIsLoggedIn(true);
+        closeAllPopups();
+        resetForm();
+        initSavedNews();
+      }
     })
 
     .catch((err) => {
-      console.log(err);
+      err.text()
+      .then((res) => {
+        const message = JSON.parse(res).message;
+        onError(message);
+      })
     });
 
   }
 
-  const signup = (email, password, username) => {
+  const signup = (email, password, username, resetForm, onError) => {
 
     register(email, password, username)
 
@@ -125,11 +135,16 @@ function App() {
       if (res) {
         closeAllPopups();
         setIsTooltipOpen(true);
+        resetForm();
       }
     })
 
     .catch((err) => {
-      console.log(err);
+      err.text()
+      .then((res) => {
+        const message = JSON.parse(res).message;
+        onError(message);
+      })
     });
 
   }
@@ -139,6 +154,7 @@ function App() {
     setCurrentUser(null);
     localStorage.removeItem("jwt");
     history.push('/');
+    setSavedNews([]);
   }
 
   const search = (query) => {

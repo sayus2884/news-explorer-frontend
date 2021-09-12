@@ -15,6 +15,8 @@ function SigninPopup({ isOpen, onClose, onSubmit }) {
   const [password, setPassword] = useState("");
   const [isPasswordInvalid, setIsPasswordInvalid] = useState(false);
   const [isButtonInactive, setIsButtonInactive] = useState(true);
+  const [formErrorText, setFormErrorText] = useState('');
+  const [isSubmitError, setIsSubmitError] = useState(false);
 
   const handleOpenSignUpModal = (event) => {
     event.preventDefault();
@@ -23,9 +25,12 @@ function SigninPopup({ isOpen, onClose, onSubmit }) {
 
   const handleOnSubmit = (event) => {
     event.preventDefault();
-    resetForm();
-    onSubmit(email, password);
+    onSubmit(email, password, resetForm, onError );
+  }
 
+  const onError = (textMessage) => {
+    setIsSubmitError(true);
+    setFormErrorText(textMessage);
   }
 
   const handleInactiveButton = () => {
@@ -54,6 +59,8 @@ function SigninPopup({ isOpen, onClose, onSubmit }) {
     setPassword("");
     setIsPasswordInvalid(false);
     setIsButtonInactive(true);
+    setFormErrorText('');
+    setIsSubmitError(false);
   }
 
   const handleOnClose = () => {
@@ -89,8 +96,9 @@ function SigninPopup({ isOpen, onClose, onSubmit }) {
             onChange={handlePasswordChange}
             value={password}
             required/>
-          <span className="form__input-error password-input-error"></span>
         </label>
+
+        <span className={`form__input-error form__submit-error ${isSubmitError && 'form__submit-error_active'}`}>{formErrorText}</span>
 
         <button className={`form__submit-button ${isButtonInactive && 'form__submit-button_inactive'}`} type="submit">Sign in</button>
 

@@ -20,15 +20,20 @@ function _fetch(method, url,
       if (res.ok) {
         return res;
       }
-      return Promise.reject(res.status);
+      return Promise.reject(res);
     });
 }
 
 export const register = (email, password, name) => {
   const url = `${baseUrl}/signup`;
   return _fetch(METHODS.POST, url, { email, password, name })
-    .then((res) => res)
-};
+    .then((res) => {
+      if (res.ok) {
+        return res;
+      }
+      return Promise.reject(res);
+    });
+}
 
 export const authorize = (email, password) => {
   const url = `${baseUrl}/signin`;

@@ -6,7 +6,6 @@ import './Main.css';
 import Header from '../Header/Header';
 import NewsCardList from '../NewsCardList/NewsCardList';
 import About from '../About/About';
-import Footer from '../Footer/Footer';
 
 import Preloader from '../Preloader/Preloader';
 import NotFound from '../NotFound/NotFound';
@@ -39,7 +38,7 @@ function Main({ news, onSearch, onSearchMore, onBookmarkClick, isSearching, maxN
       { isDefined(news) && news.length > 0 &&
       <section className="news-list">
 
-        <h2 className="news-list__title">{totalResults} Search results</h2>
+        <h2 className="news-list__title">Search results</h2>
 
         <NewsCardList news={news} savedNews={savedNews} onBookmarkClick={onBookmarkClick}/>
 
@@ -51,7 +50,6 @@ function Main({ news, onSearch, onSearchMore, onBookmarkClick, isSearching, maxN
       }
 
       <About />
-      <Footer />
     </div>
   );
 }

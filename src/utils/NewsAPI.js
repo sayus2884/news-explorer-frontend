@@ -7,9 +7,8 @@ export const METHODS = {
 }
 
 const newsBaseUrl = 'https://newsapi.org/v2'
-const joniahNewsBaseUrl = 'https://api.joniah-news.students.nomoreparties.site/'
 
-class Api {
+class NewsApi {
 
   getNews(q){
 
@@ -67,4 +66,4 @@ class Api {
   }
 }
 
-export default new Api()
+export default new NewsApi()

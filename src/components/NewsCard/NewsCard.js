@@ -6,8 +6,6 @@ import { isString } from 'validate.js';
 
 import { CurrentUserContext } from '../../contexts/CurrentUserContext.js'
 
-import joniahApi from '../../utils/joniahApi';
-
 function NewsCard({ news, isSavedNewsHeader, isSavedNews, onDeleteNews, onBookmarkClick }) {
 
   const [hideTooltip, setHideTooltip] = useState(true);

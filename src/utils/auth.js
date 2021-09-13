@@ -1,4 +1,4 @@
-import { METHODS } from './api';
+import { METHODS } from './MainApi';
 
 const baseUrl = 'https://api.joniah-news.students.nomoreparties.site'
 // const baseUrl = 'http://localhost:8080';

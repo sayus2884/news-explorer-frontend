@@ -15,9 +15,11 @@ import SigninPopup from '../SigninPopup/SigninPopup';
 import ProtectedRoute from '../ProtectedRoute/ProtectedRoute';
 import SuccessTooltip from '../SuccessTooltip/SuccessTooltip';
 
+import Footer from '../Footer/Footer';
+
 import { news as fakeNews } from '../../utils/dummy';
-import api from '../../utils/api';
-import joniahApi from '../../utils/joniahApi';
+import newsAPI from '../../utils/NewsAPI';
+import mainApi from '../../utils/MainApi';
 
 import { findSavedNews, capitalizeFirstLetter } from '../../utils/helpers';
 
@@ -39,25 +41,28 @@ function App() {
   const [newsCount, setNewsCount] = useState(3);
 
   useEffect(() => {
-    tokenCheck();
-    resetSearch();
+    tokenCheck().
+    then((user) => {
 
-    if (localStorage.getItem("news")) {
+      resetSearch();
 
-      const articles = JSON.parse(localStorage.getItem("news"));
-      const currentNews = [];
+      if (localStorage.getItem("news")) {
 
-      for (let i = 0; i < 3; i++) {
-        currentNews.push(articles[i]);
+        const articles = JSON.parse(localStorage.getItem("news"));
+        const currentNews = [];
+
+        for (let i = 0; i < 3; i++) {
+          currentNews.push(articles[i]);
+        }
+
+        setNews(articles);
+        setCurrentNews(currentNews);
+
+        if (user) {
+          initSavedNews();
+        }
       }
-
-      setNews(articles);
-      setCurrentNews(currentNews);
-
-      if (isLoggedIn) {
-        initSavedNews();
-      }
-    }
+    })
 
   }, [])
 
@@ -66,12 +71,14 @@ function App() {
 
     if (localStorage.getItem("jwt")) {
       const jwt = localStorage.getItem('jwt');
-      checkToken(jwt)
+      return checkToken(jwt)
       .then((user) => {
         if (user) {
           setCurrentUser(user);
           setIsLoggedIn(true);
           history.push(path);
+
+          return user
         }
       })
       .catch((err) => {
@@ -105,7 +112,7 @@ function App() {
       }
     })
 
-    .then(() => joniahApi.getUserInfo())
+    .then(() => mainApi.getUserInfo())
 
     .then((res) => {
       if (res) {
@@ -161,7 +168,7 @@ function App() {
     setIsSearching(true);
     setTotalResults(0);
     setIsFetchingError(false);
-    api.getNews(query)
+    newsAPI.getNews(query)
 
     .then(({ articles, totalResults }) => {
 
@@ -212,9 +219,10 @@ function App() {
   }
 
   const initSavedNews = () => {
-    return joniahApi.getNews()
+    return mainApi.getNews()
     .then((savedNews) => {
       setSavedNews(savedNews);
+      console.log(savedNews);
       return savedNews;
     })
 
@@ -228,7 +236,7 @@ function App() {
     const keyword = localStorage.getItem("keyword");
 
     if (currentUser) {
-      joniahApi.saveNews({
+      mainApi.saveNews({
         keyword,
         title,
         text: description,
@@ -248,7 +256,7 @@ function App() {
   }
 
   const deleteSavedNews = (news) => {
-    return joniahApi.deleteNews(news._id)
+    return mainApi.deleteNews(news._id)
     .then((res) => {
       setSavedNews((state) => state.filter((n) => n._id !== news._id));
     })
@@ -304,6 +312,9 @@ function App() {
           <SuccessTooltip isOpen={isTooltipOpen}
             onClose={closeAllPopups}
             openSignInModal={openSignInModal}/>
+
+          <Footer />
+
         </NavigatorContext.Provider>
       </CurrentUserContext.Provider>
     </div>

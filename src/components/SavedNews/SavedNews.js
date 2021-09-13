@@ -1,10 +1,8 @@
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 import './SavedNews.css';
 
 import SavedNewsHeader from '../SavedNewsHeader/SavedNewsHeader';
 import NewsCardList from '../NewsCardList/NewsCardList';
-
-import { news } from '../../utils/dummy';
 
 function SavedNews({ savedNews, onDeleteNews }) {
 

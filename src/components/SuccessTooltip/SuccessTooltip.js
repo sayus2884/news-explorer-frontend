@@ -1,9 +1,8 @@
 import React from 'react';
-import { NavigatorContext } from '../../contexts/NavigatorContext.js'
 
 import './SuccessTooltip.css';
 
-function SuccessTooltip({ message, image, alt, isOpen, onClose, openSignInModal }) {
+function SuccessTooltip({ isOpen, onClose, openSignInModal }) {
 
   const handleOpenSignInModal = (event) => {
     event.preventDefault();

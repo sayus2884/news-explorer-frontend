@@ -10,9 +10,7 @@ import About from '../About/About';
 import Preloader from '../Preloader/Preloader';
 import NotFound from '../NotFound/NotFound';
 
-function Main({ news, onSearch, onSearchMore, onBookmarkClick, isSearching, maxNews, savedNews, isFetchingError, totalResults }) {
-
-  const allNews = localStorage.getItem("news") ? localStorage.getItem("news").length : 0;
+function Main({ news, onSearch, onSearchMore, onBookmarkClick, isSearching, maxNews, savedNews, isFetchingError }) {
 
   return (
     <div className="main">

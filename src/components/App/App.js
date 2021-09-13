@@ -17,7 +17,6 @@ import SuccessTooltip from '../SuccessTooltip/SuccessTooltip';
 
 import Footer from '../Footer/Footer';
 
-import { news as fakeNews } from '../../utils/dummy';
 import newsAPI from '../../utils/NewsAPI';
 import mainApi from '../../utils/MainApi';
 
@@ -85,6 +84,8 @@ function App() {
         console.error(err);
       })
     }
+
+    return Promise.resolve(false);
   }
 
   const closeAllPopups = () => {
@@ -256,7 +257,7 @@ function App() {
 
   const deleteSavedNews = (news) => {
     return mainApi.deleteNews(news._id)
-    .then((res) => {
+    .then(() => {
       setSavedNews((state) => state.filter((n) => n._id !== news._id));
     })
 

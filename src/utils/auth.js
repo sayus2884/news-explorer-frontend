@@ -4,8 +4,7 @@ const baseUrl = 'https://api.joniah-news.students.nomoreparties.site'
 // const baseUrl = 'http://localhost:8080';
 function _fetch(method, url,
   data = {},
-  headers = { 'Content-Type': 'application/json' },
-  credentials = '') {
+  headers = { 'Content-Type': 'application/json' }) {
   let params = {
     method,
     headers,

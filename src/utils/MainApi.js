@@ -9,7 +9,7 @@ export const METHODS = {
 const baseUrl = 'https://api.joniah-news.students.nomoreparties.site'
 
 class Api {
-  constructor({ baseUrl, token }){
+  constructor({ baseUrl }){
     this._baseUrl = baseUrl;
   }
 

@@ -222,7 +222,6 @@ function App() {
     return mainApi.getNews()
     .then((savedNews) => {
       setSavedNews(savedNews);
-      console.log(savedNews);
       return savedNews;
     })
 

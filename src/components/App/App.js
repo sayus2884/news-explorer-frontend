@@ -267,11 +267,16 @@ function App() {
   const toggleBookmark = (news) => {
     const savedArticle = findSavedNews(news, savedNews);
 
-    if (savedArticle) {
-      deleteSavedNews(savedArticle);
+    if (!isLoggedIn) {
+      openSignInModal();
     } else {
-      saveNews(news);
+      if (savedArticle) {
+        deleteSavedNews(savedArticle);
+      } else {
+        saveNews(news);
+      }
     }
+
   }
 
   return (

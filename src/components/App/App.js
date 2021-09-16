@@ -104,9 +104,9 @@ function App() {
     setIsSignupPopupOpen(true);
   }
 
-  const login = (email, password, resetForm, onError) => {
+  const login = (email, password, onError) => {
 
-    authorize(email, password)
+    return authorize(email, password)
     .then((res) => {
       if (res.token) {
         setIsLoggedIn(true);
@@ -120,7 +120,6 @@ function App() {
         setCurrentUser(res);
         setIsLoggedIn(true);
         closeAllPopups();
-        resetForm();
         initSavedNews();
       }
     })
@@ -135,15 +134,14 @@ function App() {
 
   }
 
-  const signup = (email, password, username, resetForm, onError) => {
+  const signup = (email, password, username, onError) => {
 
-    register(email, password, username)
+    return register(email, password, username)
 
     .then((res) => {
       if (res) {
         closeAllPopups();
         setIsTooltipOpen(true);
-        resetForm();
       }
     })
 

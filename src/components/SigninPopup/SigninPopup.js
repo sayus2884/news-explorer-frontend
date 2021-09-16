@@ -25,7 +25,13 @@ function SigninPopup({ isOpen, onClose, onSubmit }) {
 
   const handleOnSubmit = (event) => {
     event.preventDefault();
-    onSubmit(email, password, resetForm, onError );
+    setIsButtonInactive(true);
+    onSubmit(email, password, onError )
+
+    .finally(() => {
+      setIsButtonInactive(false);
+      resetForm();
+    });
   }
 
   const onError = (textMessage) => {

@@ -27,7 +27,14 @@ function SignupPopup({ isOpen, onClose, onSubmit }) {
 
   const handleOnSubmit = (event) => {
     event.preventDefault();
-    onSubmit(email, password, username, resetForm, onError);
+
+    setIsButtonInactive(true);
+    onSubmit(email, password, username, onError)
+
+    .finally(() => {
+      setIsButtonInactive(false);
+      resetForm();
+    });
   }
 
   const onError = (textMessage) => {

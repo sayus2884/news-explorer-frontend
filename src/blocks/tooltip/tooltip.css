@@ -1,0 +1,19 @@
+@import url("./__close-button/tooltip__close-button.css");
+@import url("./__content/tooltip__content.css");
+@import url("./__message/tooltip__message.css");
+@import url("./__overlay/tooltip__overlay.css");
+@import url("./_hidden/tooltip_hidden.css");
+
+.tooltip {
+  top: 0;
+  position: fixed;
+  height: 100%;
+  width: 100%;
+  color: black;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  transition: visibility 0.3s, opacity 0.3s linear;
+}
